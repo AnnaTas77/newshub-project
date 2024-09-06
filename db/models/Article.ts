@@ -1,8 +1,27 @@
-import { DataTypes, Model } from "sequelize";
-import sequelize from "../sequelize";
+import { DataTypes, Model, Optional } from "sequelize";
+import sequelize from "../sequelize"; // Adjust the import based on your project structure
+
+// Define the attributes of the Article model
+interface ArticleAttributes {
+  id: number; // Primary key
+  title: string;
+  content: string;
+  author: string;
+  category: string;
+  image: string;
+  createdAt?: Date; // Optional for creation
+  updatedAt?: Date; // Optional for update
+}
+
+// Define the optional attributes for creating a new Article
+interface ArticleCreationAttributes
+  extends Optional<ArticleAttributes, "id" | "createdAt" | "updatedAt"> {}
 
 // Define the Article model
-class Article extends Model {
+class Article
+  extends Model<ArticleAttributes, ArticleCreationAttributes>
+  implements ArticleAttributes
+{
   public id!: number;
   public title!: string;
   public content!: string;
@@ -16,6 +35,11 @@ class Article extends Model {
 // Initialize the Article model
 Article.init(
   {
+    id: {
+      type: DataTypes.INTEGER,
+      autoIncrement: true,
+      primaryKey: true,
+    },
     title: {
       type: DataTypes.STRING,
       allowNull: false, // Title is required
@@ -44,11 +68,5 @@ Article.init(
   }
 );
 
-// Sync the model with the database
-const syncModels = async (): Promise<void> => {
-  await sequelize.sync();
-};
-
-syncModels();
-
+// Export the Article model
 export default Article;

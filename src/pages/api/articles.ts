@@ -1,13 +1,27 @@
-// Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import type { NextApiRequest, NextApiResponse } from "next";
+import Article from "../../../db/models/Article";
 
-type Data = {
-  name: string;
+type ResponseData = {
+  title: string;
+  content: string;
+  author: string;
+  category: string;
+  image: string;
 };
 
-export default function handler(
+type errorMessage = {
+  message: string;
+};
+
+export default async function handler(
   req: NextApiRequest,
-  res: NextApiResponse<Data>,
+  res: NextApiResponse<ResponseData[] | errorMessage>
 ) {
-  res.status(200).json({ name: "John Doe" });
+  try {
+    const articles = await Article.findAll();
+    res.status(200).json(articles);
+  } catch (error) {
+    console.error("Error fetching articles:", error);
+    res.status(500).json({ message: "Internal Server Error" });
+  }
 }

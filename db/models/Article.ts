@@ -63,7 +63,6 @@ Article.init(
   },
   {
     sequelize, // Pass the sequelize instance
-    tableName: "articles", // Name of the table in the database
     timestamps: true, // Automatically manage createdAt and updatedAt fields
   }
 );

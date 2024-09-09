@@ -39,9 +39,6 @@ const Home: React.FC<HomeProps> = ({ articleData }) => {
                 layout="responsive"
               />
               <h2>{singleArticle.title}</h2>
-              <div
-                dangerouslySetInnerHTML={{ __html: singleArticle.content }}
-              />
               <p>{singleArticle.author}</p>
               <p>{singleArticle.updatedAt}</p>
             </div>
@@ -59,6 +56,7 @@ export async function getServerSideProps() {
     id: article.id,
     title: article.title,
     content: article.content,
+    author: article.author,
     category: article.category,
     image: article.image,
     createdAt: article.createdAt.toISOString(), // Convert to string

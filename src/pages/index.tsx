@@ -34,7 +34,7 @@ const Home: React.FC<HomeProps> = ({ articleData }) => {
               <Image
                 src={singleArticle.image}
                 alt="Artcile Image"
-                width={200} // Specify the width
+                width={200} 
                 height={200}
                 layout="responsive"
               />

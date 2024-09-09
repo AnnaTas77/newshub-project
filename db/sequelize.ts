@@ -13,7 +13,6 @@ const DB_PATH_CONFIG =
   "/Users/anna.tasheva/Desktop/newshub-project/db/";
 
 const dbPath = path.join(DB_PATH_CONFIG, "database.sqlite");
-console.log("dbPath: ", dbPath);
 const sequelize = new Sequelize({
   dialect: "sqlite",
   storage: dbPath, // Path to the SQLite database file

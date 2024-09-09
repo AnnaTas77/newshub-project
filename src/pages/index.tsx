@@ -1,5 +1,5 @@
 import Head from "next/head";
-import styles from "@/styles/Home.module.css";
+// import styles from "@/styles/Home.module.css";
 import Article from "../../db/models/Article";
 import Image from "next/image";
 
@@ -27,19 +27,21 @@ const Home: React.FC<HomeProps> = ({ articleData }) => {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className={`${styles.main}`}>
+      <main>
         <div>
           {articleData.map((singleArticle: ArticleData) => (
-            <div key={singleArticle.id} className={styles.article}>
+            <div key={singleArticle.id}>
               <Image
                 src={singleArticle.image}
                 alt="Artcile Image"
-                width={500} // Specify the width
-                height={300}
+                width={200} // Specify the width
+                height={200}
                 layout="responsive"
               />
               <h2>{singleArticle.title}</h2>
-              <p>{singleArticle.content}</p>
+              <div
+                dangerouslySetInnerHTML={{ __html: singleArticle.content }}
+              />
               <p>{singleArticle.author}</p>
               <p>{singleArticle.updatedAt}</p>
             </div>
@@ -53,7 +55,15 @@ const Home: React.FC<HomeProps> = ({ articleData }) => {
 // This gets called on every request
 export async function getServerSideProps() {
   const allArticles = await Article.findAll();
-  const articleData = JSON.parse(JSON.stringify(allArticles));
+  const articleData = allArticles.map((article) => ({
+    id: article.id,
+    title: article.title,
+    content: article.content,
+    category: article.category,
+    image: article.image,
+    createdAt: article.createdAt.toISOString(), // Convert to string
+    updatedAt: article.updatedAt.toISOString(), // Convert to string
+  }));
   return { props: { articleData } };
 }
 

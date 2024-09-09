@@ -2,12 +2,14 @@ import React from "react";
 import styled from "@emotion/styled";
 
 const FormContainer = styled.div`
+  display: flex;
+  align-items: center;
   height: 100%;
 `;
 
 const Form = styled.form`
   margin: 0 auto;
-  width: 40%;
+  width: 50%;
   display: flex;
   flex-direction: column;
   border: 2px solid #ced4da;
@@ -33,12 +35,13 @@ const Input = styled.input`
 const Legend = styled.legend`
   font-size: 1.2rem;
   font-weight: bold;
+  padding: 0 5px;
 `;
 
 const CategoryContainer = styled.fieldset`
   display: flex;
   justify-content: center;
-  gap: 10px;
+  gap: 0.9rem;
   padding: 10px 0;
   margin-bottom: 18px;
   text-align: center;
@@ -49,11 +52,17 @@ const CategoryInput = styled.input`
   margin: 10px 5px 5px 0;
 `;
 
+const CategoryLabel = styled.label`
+  font-size: 1.1rem;
+  font-weight: bold;
+`;
+
 const Textarea = styled.textarea`
   width: 100%;
   padding: 12px 20px;
   margin: 16px 0;
-  max-width: 420px;
+  max-width: 100%;
+  min-width: 100%;
   display: inline-block;
   border: 1px solid #ced4da;
   border-radius: 4px;
@@ -64,7 +73,7 @@ const Textarea = styled.textarea`
 const Button = styled.button`
   width: 100%;
   background-color: #0b7285;
-  color: #e9ecef;
+  color: whitesmoke;
   font-size: 1.2rem;
   font-weight: bolder;
   padding: 14px 20px;
@@ -90,7 +99,7 @@ const CreateArticleForm = () => {
           {categories.map((category) => (
             <div key={category}>
               <CategoryInput type="radio" id={category} name="category" />
-              <Label htmlFor={category}>{category}</Label>
+              <CategoryLabel htmlFor={category}>{category}</CategoryLabel>
             </div>
           ))}
         </CategoryContainer>

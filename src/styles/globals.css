@@ -96,10 +96,10 @@ body {
     rgb(var(--background-start-rgb));
 }
 #__next {
-  display: flex;
+  /* display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: center; */
   height: 100vh;
 }
 

@@ -1,40 +1,9 @@
 import Head from "next/head";
 import Article from "../../db/models/Article";
-import Image from "next/image";
+import ArticleCard from "@/components/ArticleCard";
 import styled from "@emotion/styled";
-
-const ArticleContainer = styled.div`
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 20px;
-  justify-content: center;
-  width: 70%;
-  align-items: center;
-  margin: 120px auto 50px;
-`;
-
-const ArticleCard = styled.div`
-  display: flex;
-  flex-direction: column;
-  border: 1px solid #8080807a;
-  border-radius: 8px;
-  padding: 10px;
-  min-height: 400px;
-  justify-content: space-evenly;
-  text-align: center;
-  box-shadow: rgb(82 81 81 / 34%) 0px 2px 8px 0px;
-`;
-
-interface ArticleData {
-  id: number;
-  title: string;
-  content: string;
-  author: string;
-  category: string;
-  image: string;
-  createdAt?: string;
-  updatedAt?: string;
-}
+import ArticleList from "@/components/ArticleList";
+import { ArticleData } from "@/types/global";
 
 interface HomeProps {
   articleData: ArticleData[];
@@ -50,22 +19,7 @@ const Home: React.FC<HomeProps> = ({ articleData }) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
-        <ArticleContainer>
-          {articleData.map((singleArticle: ArticleData) => (
-            <ArticleCard key={singleArticle.id}>
-              <Image
-                src={singleArticle.image}
-                alt="Artcile Image"
-                width={200}
-                height={200}
-                layout="responsive"
-              />
-              <h3>{singleArticle.title}</h3>
-              <p>{singleArticle.author}</p>
-              <p>{singleArticle.updatedAt}</p>
-            </ArticleCard>
-          ))}
-        </ArticleContainer>
+        <ArticleList articleData={articleData} />
       </main>
     </>
   );
@@ -90,7 +44,7 @@ export async function getServerSideProps() {
       day: "numeric",
       month: "short",
       year: "numeric",
-    }), // Convert to string
+    }),
   }));
   return { props: { articleData } };
 }

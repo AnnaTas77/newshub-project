@@ -10,7 +10,7 @@ const ArticleContainer = styled.div`
   justify-content: center;
   width: 70%;
   align-items: center;
-  margin: 50px auto;
+  margin: 120px auto 50px;
 `;
 
 const ArticleCard = styled.div`
@@ -81,8 +81,16 @@ export async function getServerSideProps() {
     author: article.author,
     category: article.category,
     image: article.image,
-    createdAt: article.createdAt.toISOString(), // Convert to string
-    updatedAt: article.updatedAt.toISOString(), // Convert to string
+    createdAt: article.createdAt.toLocaleString("en-GB", {
+      day: "numeric",
+      month: "short",
+      year: "numeric",
+    }), // Convert to string
+    updatedAt: article.updatedAt.toLocaleString("en-GB", {
+      day: "numeric",
+      month: "short",
+      year: "numeric",
+    }), // Convert to string
   }));
   return { props: { articleData } };
 }

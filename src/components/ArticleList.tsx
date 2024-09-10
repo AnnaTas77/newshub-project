@@ -13,11 +13,11 @@ const ArticleContainerStyle = styled.div`
   margin: 120px auto 50px;
 `;
 
-interface Props {
+interface ArticleListProps {
   articleData: ArticleData[];
 }
 
-const ArticleList = ({ articleData }: Props) => {
+const ArticleList: React.FC<ArticleListProps> = ({ articleData }) => {
   return (
     <ArticleContainerStyle>
       {articleData.map((singleArticle: ArticleData) => (

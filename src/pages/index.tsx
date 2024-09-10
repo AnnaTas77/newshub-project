@@ -1,7 +1,5 @@
 import Head from "next/head";
 import Article from "../../db/models/Article";
-import ArticleCard from "@/components/ArticleCard";
-import styled from "@emotion/styled";
 import ArticleList from "@/components/ArticleList";
 import { ArticleData } from "@/types/global";
 

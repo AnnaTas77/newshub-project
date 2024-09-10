@@ -15,11 +15,11 @@ const ArticleCardStyle = styled.div`
   box-shadow: rgb(82 81 81 / 34%) 0px 2px 8px 0px;
 `;
 
-interface Props {
+interface ArticleCardProps {
   singleArticle: ArticleData;
 }
 
-const ArticleCard = ({ singleArticle }: Props) => {
+const ArticleCard: React.FC<ArticleCardProps> = ({ singleArticle }) => {
   return (
     <ArticleCardStyle>
       <Image

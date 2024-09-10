@@ -4,6 +4,7 @@ import Article from "../../../db/models/Article";
 import ArticleList from "@/components/ArticleList";
 import { ArticleData } from "@/types/global";
 import styled from "@emotion/styled";
+import Link from "next/link";
 
 const MainStyle = styled.main`
   display: flex;
@@ -29,6 +30,7 @@ const GreenButton = styled.button`
     transform: translateY(-2px);
   }
 `;
+
 interface AdminProps {
   articleData: ArticleData[];
 }
@@ -43,7 +45,9 @@ const Admin: React.FC<AdminProps> = ({ articleData }) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <MainStyle>
-        <GreenButton>Create a New Article</GreenButton>
+        <Link href="/create-article">
+          <GreenButton>Create a New Article</GreenButton>
+        </Link>
         <ArticleList articleData={articleData} isAdmin={true} />
       </MainStyle>
     </>

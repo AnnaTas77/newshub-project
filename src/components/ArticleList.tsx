@@ -3,8 +3,10 @@ import styled from "@emotion/styled";
 import { ArticleData } from "@/types/global";
 import ArticleCard from "./ArticleCard";
 
-const ArticleContainerStyle = styled.div`
-  display: grid;
+//the styled component will accept a prop named 'isAdmin' of type 'boolean'
+const ArticleContainerStyle = styled.section<{ isAdmin: boolean }>`
+  display: ${({ isAdmin }) => (isAdmin ? "flex" : "grid")};
+  flex-direction: column;
   grid-template-columns: repeat(4, 1fr);
   gap: 20px;
   justify-content: center;
@@ -15,13 +17,18 @@ const ArticleContainerStyle = styled.div`
 
 interface ArticleListProps {
   articleData: ArticleData[];
+  isAdmin: boolean;
 }
 
-const ArticleList: React.FC<ArticleListProps> = ({ articleData }) => {
+const ArticleList: React.FC<ArticleListProps> = ({ articleData, isAdmin }) => {
   return (
-    <ArticleContainerStyle>
+    <ArticleContainerStyle isAdmin={isAdmin}>
       {articleData.map((singleArticle: ArticleData) => (
-        <ArticleCard key={singleArticle.id} singleArticle={singleArticle} />
+        <ArticleCard
+          key={singleArticle.id}
+          singleArticle={singleArticle}
+          isAdmin={isAdmin}
+        />
       ))}
     </ArticleContainerStyle>
   );

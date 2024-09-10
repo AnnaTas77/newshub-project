@@ -17,7 +17,7 @@ const Home: React.FC<HomeProps> = ({ articleData }) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
-        <ArticleList articleData={articleData} />
+        <ArticleList articleData={articleData} isAdmin={false} />
       </main>
     </>
   );

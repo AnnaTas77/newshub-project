@@ -12,6 +12,8 @@ const ArticleCardStyle = styled.div<{ isAdmin: boolean }>`
   min-height: ${({ isAdmin }) => (isAdmin ? "none" : "420px")};
   width: ${({ isAdmin }) => (isAdmin ? "70%" : "none")};
   text-align: ${({ isAdmin }) => (isAdmin ? "left" : "center")};
+  border: ${({ isAdmin }) => (isAdmin ? "1px solid #8080807a" : "none")};
+
   transition: box-shadow 0.3s ease, border 0.3s ease;
   &:hover {
     box-shadow: rgb(82 81 81 / 34%) 0px 2px 8px 0px;

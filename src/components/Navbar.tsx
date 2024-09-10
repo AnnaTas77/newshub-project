@@ -27,12 +27,21 @@ const NavbarList = styled.ul`
 
 const Button = styled.button`
   font-size: 1.1rem;
-  background-color: #0b7285;
-  font-weight: 900;
+  font-weight: 700;
   padding: 12px;
-  color: whitesmoke;
   border-radius: 8px;
   border: none;
+  background-image: linear-gradient(144deg, #af40ff, #5b42f3 50%, #00ddeb);
+  border: 0;
+  color: #ffffff;
+  font-size: 1.2rem;
+  min-width: 110px;
+  cursor: pointer;
+  transform: translateY(0);
+  transition: transform 150ms;
+  &:hover {
+    transform: translateY(-2px);
+  }
 `;
 
 const Navbar: React.FC = () => {

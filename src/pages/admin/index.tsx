@@ -11,6 +11,24 @@ const MainStyle = styled.main`
   align-items: center;
   margin-top: 120px;
 `;
+
+const GreenButton = styled.button`
+  background-color: #13aa52;
+  border: none;
+  border-radius: 4px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0 2px 4px 0;
+  color: #fff;
+  cursor: pointer;
+  font-size: 1.2rem;
+  padding: 10px 25px;
+  text-align: center;
+  transform: translateY(0);
+  transition: transform 150ms, box-shadow 150ms;
+  &:hover {
+    box-shadow: rgba(0, 0, 0, 0.15) 0 3px 9px 0;
+    transform: translateY(-2px);
+  }
+`;
 interface AdminProps {
   articleData: ArticleData[];
 }
@@ -25,7 +43,7 @@ const Admin: React.FC<AdminProps> = ({ articleData }) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <MainStyle>
-        <button>Create New Article</button>
+        <GreenButton>Create a New Article</GreenButton>
         <ArticleList articleData={articleData} isAdmin={true} />
       </MainStyle>
     </>

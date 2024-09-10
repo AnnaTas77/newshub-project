@@ -88,6 +88,7 @@ body {
 body {
   height: 100vh;
   color: rgb(var(--foreground-rgb));
+  font-family: "Akzidenz Grotesk BQ Medium", sans-serif;
   background: linear-gradient(
       to bottom,
       transparent,
@@ -96,10 +97,6 @@ body {
     rgb(var(--background-start-rgb));
 }
 #__next {
-  /* display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center; */
   height: 100vh;
 }
 

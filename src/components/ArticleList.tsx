@@ -6,14 +6,19 @@ import ArticleCard from "./ArticleCard";
 //the styled component will accept a prop named 'isAdmin' of type 'boolean'
 const ArticleContainerStyle = styled.section<{ isAdmin: boolean }>`
   display: ${({ isAdmin }) => (isAdmin ? "flex" : "grid")};
-  flex-direction: column;
-  grid-template-columns: repeat(3, 1fr);
+  flex-direction: ${({ isAdmin }) =>
+    isAdmin ? "column" : "initial"}; /* Only apply for flex */
+  grid-template-columns: ${({ isAdmin }) =>
+    isAdmin
+      ? "none"
+      : "repeat(auto-fill, minmax(250px, 275px))"}; /* Responsive columns */
   gap: 20px;
   justify-content: center;
-  max-width: 1000px;
-  width: 70%;
-  align-items: center;
+  width: 90%;
+  align-items: center; /* Only applies to flex */
   margin: 30px 0;
+  flex-wrap: ${({ isAdmin }) =>
+    isAdmin ? "wrap" : "initial"}; /* Allow wrapping for flex */
 `;
 
 interface ArticleListProps {

@@ -6,14 +6,16 @@ import { ArticleData } from "@/types/global";
 const ArticleCardStyle = styled.div<{ isAdmin: boolean }>`
   display: flex;
   flex-direction: column;
-  border: 1px solid #8080807a;
+  justify-content: flex-start;
   border-radius: 8px;
   padding: 10px;
   min-height: ${({ isAdmin }) => (isAdmin ? "none" : "420px")};
   width: ${({ isAdmin }) => (isAdmin ? "70%" : "none")};
-  justify-content: space-evenly;
   text-align: ${({ isAdmin }) => (isAdmin ? "left" : "center")};
-  box-shadow: rgb(82 81 81 / 34%) 0px 2px 8px 0px;
+  transition: box-shadow 0.3s ease, border 0.3s ease;
+  &:hover {
+    box-shadow: rgb(82 81 81 / 34%) 0px 2px 8px 0px;
+  }
 `;
 
 const ButtonContainer = styled.div`

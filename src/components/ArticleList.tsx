@@ -12,7 +12,7 @@ const ArticleContainerStyle = styled.section<{ isAdmin: boolean }>`
   justify-content: center;
   width: 70%;
   align-items: center;
-  margin: 120px auto 50px;
+  margin: 20px 0;
 `;
 
 interface ArticleListProps {

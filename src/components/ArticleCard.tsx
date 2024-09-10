@@ -26,23 +26,21 @@ const ArticleCard: React.FC<ArticleCardProps> = ({
   isAdmin,
 }) => {
   return (
-    <>
-      <ArticleCardStyle isAdmin={isAdmin}>
-        {!isAdmin && (
-          <Image
-            src={singleArticle.image}
-            alt="Article Image"
-            width={200}
-            height={200}
-            layout="responsive"
-          />
-        )}
-        {!isAdmin && <p>{singleArticle.category}</p>}
-        <h4>{singleArticle.title}</h4>
-        <p>{singleArticle.author}</p>
-        <p>{singleArticle.updatedAt}</p>
-      </ArticleCardStyle>
-    </>
+    <ArticleCardStyle isAdmin={isAdmin}>
+      {!isAdmin && (
+        <Image
+          src={singleArticle.image}
+          alt="Article Image"
+          width={200}
+          height={200}
+          layout="responsive"
+        />
+      )}
+      {!isAdmin && <p>{singleArticle.category}</p>}
+      <h4>{singleArticle.title}</h4>
+      <p>{singleArticle.author}</p>
+      <p>{singleArticle.updatedAt}</p>
+    </ArticleCardStyle>
   );
 };
 

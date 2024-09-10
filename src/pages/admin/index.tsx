@@ -3,7 +3,14 @@ import Head from "next/head";
 import Article from "../../../db/models/Article";
 import ArticleList from "@/components/ArticleList";
 import { ArticleData } from "@/types/global";
+import styled from "@emotion/styled";
 
+const MainStyle = styled.main`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 120px;
+`;
 interface AdminProps {
   articleData: ArticleData[];
 }
@@ -17,9 +24,10 @@ const Admin: React.FC<AdminProps> = ({ articleData }) => {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main>
+      <MainStyle>
+        <button>Create New Article</button>
         <ArticleList articleData={articleData} isAdmin={true} />
-      </main>
+      </MainStyle>
     </>
   );
 };

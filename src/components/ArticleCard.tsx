@@ -36,6 +36,13 @@ const ButtonStyle = styled.button`
   }
 `;
 
+const ImageContainer = styled.div`
+  position: relative; /* Required for layout="fill" */
+  width: 250px;
+  height: 250px;
+  overflow: hidden;
+`;
+
 interface ArticleCardProps {
   singleArticle: ArticleData;
   isAdmin: boolean;
@@ -49,13 +56,14 @@ const ArticleCard: React.FC<ArticleCardProps> = ({
     <ArticleCardStyle isAdmin={isAdmin}>
       <div>
         {!isAdmin && (
-          <Image
-            src={singleArticle.image}
-            alt="Article Image"
-            width={200}
-            height={200}
-            layout="responsive"
-          />
+          <ImageContainer>
+            <Image
+              src={singleArticle.image}
+              alt="Article Image"
+              layout="fill"
+              objectFit="cover"
+            />
+          </ImageContainer>
         )}
         {!isAdmin && <p>{singleArticle.category}</p>}
         <h4>{singleArticle.title}</h4>

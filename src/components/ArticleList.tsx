@@ -7,7 +7,7 @@ import ArticleCard from "./ArticleCard";
 const ArticleContainerStyle = styled.section<{ isAdmin: boolean }>`
   display: ${({ isAdmin }) => (isAdmin ? "flex" : "grid")};
   flex-direction: column;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 20px;
   justify-content: center;
   max-width: 1000px;

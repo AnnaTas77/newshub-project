@@ -10,6 +10,7 @@ const ArticleContainerStyle = styled.section<{ isAdmin: boolean }>`
   grid-template-columns: repeat(4, 1fr);
   gap: 20px;
   justify-content: center;
+  max-width: 1000px;
   width: 70%;
   align-items: center;
   margin: 30px 0;

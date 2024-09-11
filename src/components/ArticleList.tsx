@@ -7,7 +7,7 @@ import ArticleCard from "./ArticleCard";
 const ArticleContainerStyle = styled.section<{ isAdmin: boolean }>`
   display: ${({ isAdmin }) => (isAdmin ? "flex" : "grid")};
   flex-direction: ${({ isAdmin }) =>
-    isAdmin ? "column" : "initial"}; /* Only apply for flex */
+    isAdmin ? "column-reverse" : "initial"}; /* Only apply for flex */
   grid-template-columns: ${({ isAdmin }) =>
     isAdmin
       ? "none"

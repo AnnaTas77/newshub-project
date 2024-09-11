@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "@emotion/styled";
 import Image from "next/image";
 import { ArticleData } from "@/types/global";
@@ -56,16 +56,34 @@ const ArticleCard: React.FC<ArticleCardProps> = ({
   singleArticle,
   isAdmin,
 }) => {
+  const [image, setImage] = useState<string>(singleArticle.image);
+  const defaultImage = "/images/default-news-img.jpg";
+
+  const handleError = () => {
+    setImage(defaultImage);
+  };
+
+  const isValidImagePath = (path: string) => {
+    if (!path) return false;
+    if (path.startsWith("http://") || path.startsWith("https://")) return true;
+    if (path.startsWith("/images")) return true;
+    return false;
+  };
+
+  // Determine the image source
+  const imageSrc = isValidImagePath(image) ? image : defaultImage;
+
   return (
     <ArticleCardStyle isAdmin={isAdmin}>
       <div>
         {!isAdmin && (
           <ImageContainer>
             <Image
-              src={singleArticle.image}
+              src={imageSrc}
               alt="Article Image"
               layout="fill"
               objectFit="cover"
+              onError={handleError}
             />
           </ImageContainer>
         )}

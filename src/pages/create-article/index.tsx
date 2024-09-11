@@ -1,10 +1,13 @@
-import React from "react";
+import React, { useState, FormEvent, ChangeEvent } from "react";
 import styled from "@emotion/styled";
+import { useRouter } from "next/router";
 
 const FormContainer = styled.div`
   display: flex;
+  flex-direction: column;
   align-items: center;
   height: 100%;
+  margin-top: 150px;
 `;
 
 const Form = styled.form`
@@ -82,39 +85,144 @@ const Button = styled.button`
   border-radius: 4px;
   cursor: pointer;
   text-wrap: nowrap;
-
   &:hover {
     background-color: #1098ad;
   }
 `;
 
+const ErrorStyle = styled.h3`
+  color: #e20b0b;
+  padding: 0 0 20px;
+  height: 20px;
+`;
+
+interface FormData {
+  category: string;
+  title: string;
+  author: string;
+  content: string;
+  image: string;
+}
+
 const CreateArticleForm = () => {
+  const [formData, setFormData] = useState<FormData>({
+    category: "",
+    title: "",
+    author: "",
+    content: "",
+    image: "",
+  });
+
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [isError, setIsError] = useState<string | null>(null);
+
   const categories = ["tech", "culture", "sports", "economy", "climate"];
+  const router = useRouter();
+
+  const handleChange = (
+    event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    setFormData({ ...formData, [event.target.name]: event.target.value });
+  };
+
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    setIsLoading(true);
+    setIsError(null); // Clear previous errors when a new request starts
+
+    try {
+      const response = await fetch("api/articles", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to submit the data. Please try again.");
+      }
+
+      router.push("/admin");
+      
+    } catch (error: any) {
+      // Capture the error message to display to the user
+      setIsError("Failed to submit the data. Please try again.");
+      console.error(error);
+      setTimeout(() => {
+        setIsError(null);
+        setFormData({
+          category: "",
+          title: "",
+          author: "",
+          content: "",
+          image: "",
+        });
+      }, 3000);
+    }
+  };
 
   return (
     <FormContainer>
-      <Form className="create-form">
+      {isError ? <ErrorStyle>{isError}</ErrorStyle> : <ErrorStyle></ErrorStyle>}
+      <Form onSubmit={handleSubmit}>
         <CategoryContainer>
           <Legend>Category</Legend>
           {categories.map((category) => (
             <div key={category}>
-              <CategoryInput type="radio" id={category} name="category" />
+              <CategoryInput
+                required
+                type="radio"
+                id={category}
+                name="category"
+                value={category}
+                checked={category === formData.category}
+                onChange={handleChange}
+              />
               <CategoryLabel htmlFor={category}>{category}</CategoryLabel>
             </div>
           ))}
         </CategoryContainer>
 
         <Label htmlFor="title">Title</Label>
-        <Input required={true} type="text" name="title" id="title" />
+        <Input
+          required
+          type="text"
+          name="title"
+          id="title"
+          value={formData.title}
+          onChange={handleChange}
+        />
 
         <Label htmlFor="author">Author</Label>
-        <Input required={true} type="text" name="author" id="author" />
+        <Input
+          required
+          type="text"
+          name="author"
+          id="author"
+          value={formData.author}
+          onChange={handleChange}
+        />
 
         <Label htmlFor="content">Content</Label>
-        <Textarea required={true} name="content" id="content" />
+        <Textarea
+          required
+          name="content"
+          id="content"
+          value={formData.content}
+          onChange={handleChange}
+        />
 
         <Label htmlFor="image">Image</Label>
-        <Input required={true} type="text" name="image" id="image" />
+        <Input
+          required
+          type="text"
+          name="image"
+          id="image"
+          value={formData.image}
+          onChange={handleChange}
+        />
 
         <Button type="submit">Submit</Button>
       </Form>

@@ -1,4 +1,5 @@
 import React, { useState, FormEvent, ChangeEvent } from "react";
+import Head from "next/head";
 import styled from "@emotion/styled";
 import { useRouter } from "next/router";
 
@@ -163,69 +164,84 @@ const CreateArticlePage = () => {
   };
 
   return (
-    <FormContainer>
-      {isError ? <ErrorStyle>{isError}</ErrorStyle> : <ErrorStyle></ErrorStyle>}
-      <Form onSubmit={handleSubmit}>
-        <CategoryContainer>
-          <Legend>Category</Legend>
-          {categories.map((category) => (
-            <div key={category}>
-              <CategoryInput
-                required
-                type="radio"
-                id={category}
-                name="category"
-                value={category}
-                checked={category === formData.category}
-                onChange={handleChange}
-              />
-              <CategoryLabel htmlFor={category}>{category}</CategoryLabel>
-            </div>
-          ))}
-        </CategoryContainer>
-
-        <Label htmlFor="title">Title</Label>
-        <Input
-          required
-          type="text"
-          name="title"
-          id="title"
-          value={formData.title}
-          onChange={handleChange}
+    <>
+      <Head>
+        <title>NewsHub - Admin</title>
+        <meta
+          name="description"
+          content="Provides a form that enables authors and editors to easily submit new articles"
         />
+      </Head>
+      <main>
+        <FormContainer>
+          {isError ? (
+            <ErrorStyle>{isError}</ErrorStyle>
+          ) : (
+            <ErrorStyle></ErrorStyle>
+          )}
+          <Form onSubmit={handleSubmit}>
+            <CategoryContainer>
+              <Legend>Category</Legend>
+              {categories.map((category) => (
+                <div key={category}>
+                  <CategoryInput
+                    required
+                    type="radio"
+                    id={category}
+                    name="category"
+                    value={category}
+                    checked={category === formData.category}
+                    onChange={handleChange}
+                  />
+                  <CategoryLabel htmlFor={category}>{category}</CategoryLabel>
+                </div>
+              ))}
+            </CategoryContainer>
 
-        <Label htmlFor="author">Author</Label>
-        <Input
-          required
-          type="text"
-          name="author"
-          id="author"
-          value={formData.author}
-          onChange={handleChange}
-        />
+            <Label htmlFor="title">Title</Label>
+            <Input
+              required
+              type="text"
+              name="title"
+              id="title"
+              value={formData.title}
+              onChange={handleChange}
+            />
 
-        <Label htmlFor="content">Content</Label>
-        <Textarea
-          required
-          name="content"
-          id="content"
-          value={formData.content}
-          onChange={handleChange}
-        />
+            <Label htmlFor="author">Author</Label>
+            <Input
+              required
+              type="text"
+              name="author"
+              id="author"
+              value={formData.author}
+              onChange={handleChange}
+            />
 
-        <Label htmlFor="image">Image</Label>
-        <Input
-          required
-          type="text"
-          name="image"
-          id="image"
-          value={formData.image}
-          onChange={handleChange}
-        />
+            <Label htmlFor="content">Content</Label>
+            <Textarea
+              required
+              name="content"
+              id="content"
+              value={formData.content}
+              onChange={handleChange}
+            />
 
-        <Button type="submit">Submit</Button>
-      </Form>
-    </FormContainer>
+            <Label htmlFor="image">Image</Label>
+            <Input
+              required
+              type="text"
+              name="image"
+              id="image"
+              value={formData.image}
+              onChange={handleChange}
+            />
+
+            <Button type="submit">Publish</Button>
+          </Form>
+        </FormContainer>
+      </main>
+    </>
   );
 };
 

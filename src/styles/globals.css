@@ -88,7 +88,7 @@ body {
 body {
   height: 100vh;
   color: rgb(var(--foreground-rgb));
-  font-family: "Akzidenz Grotesk BQ Medium", sans-serif;
+  font-family: Arial, sans-serif;
   background: linear-gradient(
       to bottom,
       transparent,

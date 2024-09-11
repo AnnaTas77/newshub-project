@@ -2,6 +2,7 @@ import React from "react";
 import styled from "@emotion/styled";
 import { ArticleData } from "@/types/global";
 import ArticleCard from "./ArticleCard";
+import Link from "next/link";
 
 //the styled component will accept a prop named 'isAdmin' of type 'boolean'
 const ArticleContainerStyle = styled.section<{ isAdmin: boolean }>`
@@ -31,11 +32,9 @@ const ArticleList: React.FC<ArticleListProps> = ({ articleData, isAdmin }) => {
   return (
     <ArticleContainerStyle isAdmin={isAdmin}>
       {reversedData.map((singleArticle: ArticleData) => (
-        <ArticleCard
-          key={singleArticle.id}
-          singleArticle={singleArticle}
-          isAdmin={isAdmin}
-        />
+        <Link key={singleArticle.id} href={`/articles/${singleArticle.id}`}>
+          <ArticleCard singleArticle={singleArticle} isAdmin={isAdmin} />
+        </Link>
       ))}
     </ArticleContainerStyle>
   );

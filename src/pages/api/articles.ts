@@ -9,13 +9,13 @@ type ResponseData = {
   image: string;
 };
 
-type errorMessage = {
+type ErrorMessage = {
   message: string;
 };
 
 export default async function handler(
   req: NextApiRequest,
-  res: NextApiResponse<ResponseData[] | ResponseData | errorMessage>
+  res: NextApiResponse<ResponseData[] | ResponseData | ErrorMessage>
 ) {
   try {
     if (req.method === "GET") {

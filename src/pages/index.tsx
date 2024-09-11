@@ -15,7 +15,7 @@ interface HomeProps {
   articleData: ArticleData[];
 }
 
-const Home: React.FC<HomeProps> = ({ articleData }) => {
+const HomePage: React.FC<HomeProps> = ({ articleData }) => {
   return (
     <>
       <Head>
@@ -55,4 +55,4 @@ export async function getServerSideProps() {
   return { props: { articleData } };
 }
 
-export default Home;
+export default HomePage;

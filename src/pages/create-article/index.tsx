@@ -104,7 +104,7 @@ interface FormData {
   image: string;
 }
 
-const CreateArticleForm = () => {
+const CreateArticlePage = () => {
   const [formData, setFormData] = useState<FormData>({
     category: "",
     title: "",
@@ -145,7 +145,6 @@ const CreateArticleForm = () => {
       }
 
       router.push("/admin");
-      
     } catch (error: any) {
       // Capture the error message to display to the user
       setIsError("Failed to submit the data. Please try again.");
@@ -230,4 +229,4 @@ const CreateArticleForm = () => {
   );
 };
 
-export default CreateArticleForm;
+export default CreateArticlePage;

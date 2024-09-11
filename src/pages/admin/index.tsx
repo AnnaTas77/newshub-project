@@ -35,7 +35,7 @@ interface AdminProps {
   articleData: ArticleData[];
 }
 
-const Admin: React.FC<AdminProps> = ({ articleData }) => {
+const AdminPage: React.FC<AdminProps> = ({ articleData }) => {
   return (
     <>
       <Head>
@@ -77,4 +77,4 @@ export async function getServerSideProps() {
   return { props: { articleData } };
 }
 
-export default Admin;
+export default AdminPage;

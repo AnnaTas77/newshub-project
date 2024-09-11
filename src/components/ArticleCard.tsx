@@ -56,7 +56,7 @@ const ArticleCard: React.FC<ArticleCardProps> = ({
   isAdmin,
 }) => {
   const [image, setImage] = useState<string>(singleArticle.image);
-  const defaultImage = "/images/default-news-img.jpg";
+  const defaultImage = "/images/default-news.jpg";
 
   const handleError = () => {
     setImage(defaultImage);

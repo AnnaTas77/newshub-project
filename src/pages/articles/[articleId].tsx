@@ -18,6 +18,7 @@ const MainStyle = styled.main`
 
   article {
     padding:15px;
+    min-width: 100%;
   }
 
   img {
@@ -76,7 +77,7 @@ const SingleArticlePage: React.FC<CurrentArticleProps> = ({
   currentArticle,
 }) => {
   const [image, setImage] = useState<string>(currentArticle.image);
-  const defaultImage = "/images/default-news-img.jpg";
+  const defaultImage = "/images/default-news.jpg";
 
   const handleError = () => {
     setImage(defaultImage);

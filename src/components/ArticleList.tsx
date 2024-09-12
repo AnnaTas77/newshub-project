@@ -31,11 +31,19 @@ const ArticleList: React.FC<ArticleListProps> = ({ articleData, isAdmin }) => {
   const reversedData = [...articleData].reverse();
   return (
     <ArticleContainerStyle isAdmin={isAdmin}>
-      {reversedData.map((singleArticle: ArticleData) => (
-        <Link key={singleArticle.id} href={`/articles/${singleArticle.id}`}>
-          <ArticleCard singleArticle={singleArticle} isAdmin={isAdmin} />
-        </Link>
-      ))}
+      {reversedData.map((singleArticle: ArticleData) =>
+        isAdmin ? (
+          <ArticleCard
+            key={singleArticle.id}
+            singleArticle={singleArticle}
+            isAdmin={isAdmin}
+          />
+        ) : (
+          <Link key={singleArticle.id} href={`/articles/${singleArticle.id}`}>
+            <ArticleCard singleArticle={singleArticle} isAdmin={isAdmin} />
+          </Link>
+        )
+      )}
     </ArticleContainerStyle>
   );
 };

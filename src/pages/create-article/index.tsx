@@ -74,27 +74,30 @@ const Textarea = styled.textarea`
   font-size: 1rem;
 `;
 
-const Button = styled.button`
-  width: 100%;
-  background-color: #0b7285;
-  color: whitesmoke;
-  font-size: 1.2rem;
-  font-weight: bolder;
-  padding: 14px 20px;
-  margin: 8px 0;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  text-wrap: nowrap;
-  &:hover {
-    background-color: #1098ad;
-  }
-`;
-
 const ErrorStyle = styled.h3`
   color: #e20b0b;
   padding: 0 0 20px;
   height: 20px;
+`;
+
+const GreenButton = styled.button`
+  width: 30%;
+  margin: 0 auto;
+  background-color: #13aa52;
+  border: none;
+  border-radius: 4px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0 2px 4px 0;
+  color: #fff;
+  cursor: pointer;
+  font-size: 1.2rem;
+  padding: 10px 25px;
+  text-align: center;
+  transform: translateY(0);
+  transition: transform 150ms, box-shadow 150ms;
+  &:hover {
+    box-shadow: rgba(0, 0, 0, 0.15) 0 3px 9px 0;
+    transform: translateY(-2px);
+  }
 `;
 
 interface FormData {
@@ -237,7 +240,7 @@ const CreateArticlePage = () => {
               onChange={handleChange}
             />
 
-            <Button type="submit">Publish</Button>
+            <GreenButton type="submit">Publish</GreenButton>
           </Form>
         </FormContainer>
       </main>

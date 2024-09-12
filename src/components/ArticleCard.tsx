@@ -47,7 +47,15 @@ const ArticleCard: React.FC<ArticleCardProps> = ({
         {!isAdmin && <div>{singleArticle.category}</div>}
         <h4>{singleArticle.title}</h4>
         <p>{singleArticle.author}</p>
-        <time>{singleArticle.updatedAt}</time>
+        <StyledComponents.TimeContainer>
+          {" "}
+          {isAdmin ? (
+            <time>Last updated: {singleArticle.updatedAt}</time>
+          ) : (
+            <time>{singleArticle.updatedAt}</time>
+          )}
+          {isAdmin && <time>Created on: {singleArticle.createdAt}</time>}
+        </StyledComponents.TimeContainer>
       </StyledComponents.CardWrapper>
 
       <StyledComponents.ButtonContainer>

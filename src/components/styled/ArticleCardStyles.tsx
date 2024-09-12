@@ -21,9 +21,15 @@ export const CardWrapper = styled.div`
     font-weight: bold;
     color: #30a3c0;
   }
+`;
+
+export const TimeContainer = styled.div`
+  display: flex;
+  flex-direction: column;
 
   time {
     font-size: 0.9rem;
+    font-weight: normal;
   }
 `;
 

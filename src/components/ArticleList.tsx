@@ -7,8 +7,7 @@ import Link from "next/link";
 //the styled component will accept a prop named 'isAdmin' of type 'boolean'
 const ArticleContainerStyle = styled.section<{ isAdmin: boolean }>`
   display: ${({ isAdmin }) => (isAdmin ? "flex" : "grid")};
-  flex-direction: ${({ isAdmin }) =>
-    isAdmin ? "column" : "initial"}; /* Only apply for flex */
+  flex-direction: ${({ isAdmin }) => (isAdmin ? "column" : "initial")};
   grid-template-columns: ${({ isAdmin }) =>
     isAdmin
       ? "none"

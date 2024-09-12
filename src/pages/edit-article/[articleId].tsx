@@ -25,7 +25,6 @@ const EditArticlePage: React.FC<EditArticleProps> = ({ currentArticle }) => {
 
   const router = useRouter();
   const { articleId } = router.query;
-  console.log(articleId);
 
   const handleChange = (
     event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>

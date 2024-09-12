@@ -29,7 +29,9 @@ const HomePage: React.FC<HomeProps> = ({ articleData }) => {
 
 // This gets called on every request
 export async function getServerSideProps() {
-  const allArticles = await Article.findAll();
+  const allArticles = await Article.findAll({
+    order: [["updatedAt", "ASC"]], // Sort by updatedAt in ascending order (last updated first)
+  });
   const articleData = allArticles.map((article) => ({
     id: article.id,
     title: article.title,

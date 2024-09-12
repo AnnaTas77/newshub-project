@@ -1,50 +1,8 @@
 import React, { useState } from "react";
-import styled from "@emotion/styled";
 import Image from "next/image";
 import { ArticleData } from "@/types/global";
 import Link from "next/link";
-
-const ArticleCardStyle = styled.div<{ isAdmin: boolean }>`
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  border-radius: 8px;
-  padding: 10px;
-  min-height: ${({ isAdmin }) => (isAdmin ? "none" : "420px")};
-  width: ${({ isAdmin }) => (isAdmin ? "70%" : "none")};
-  border: ${({ isAdmin }) => (isAdmin ? "1px solid #8080807a" : "none")};
-  transition: box-shadow 0.3s ease, border 0.3s ease;
-  &:hover {
-    box-shadow: rgb(82 81 81 / 34%) 0px 2px 8px 0px;
-  }
-`;
-
-const ButtonContainer = styled.div`
-  display: flex;
-  gap: 20px;
-  margin: 0 auto;
-`;
-
-const ButtonStyle = styled.button`
-  background: #fff;
-  border-radius: 8px;
-  border: 1px solid #909090;
-  cursor: pointer;
-  padding: 8px 10px;
-  min-width: 60px;
-  transform: translateZ(0) scale(1);
-  transition: transform 0.2s;
-  &:hover {
-    transform: scale(1.05);
-  }
-`;
-
-const ImageContainer = styled.div`
-  position: relative; /* Required for layout="fill" */
-  width: 250px;
-  height: 250px;
-  overflow: hidden;
-`;
+import * as StyledComponents from "../components/styled/ArticleCardStyles";
 
 interface ArticleCardProps {
   singleArticle: ArticleData;
@@ -73,10 +31,10 @@ const ArticleCard: React.FC<ArticleCardProps> = ({
   const imageSrc = isValidImagePath(image) ? image : defaultImage;
 
   return (
-    <ArticleCardStyle isAdmin={isAdmin}>
-      <div>
+    <StyledComponents.ArticleCardStyle isAdmin={isAdmin}>
+      <StyledComponents.CardWrapper>
         {!isAdmin && (
-          <ImageContainer>
+          <StyledComponents.ImageContainer>
             <Image
               src={imageSrc}
               alt="Article Image"
@@ -84,26 +42,28 @@ const ArticleCard: React.FC<ArticleCardProps> = ({
               objectFit="cover"
               onError={handleError}
             />
-          </ImageContainer>
+          </StyledComponents.ImageContainer>
         )}
-        {!isAdmin && <p>{singleArticle.category}</p>}
+        {!isAdmin && <div>{singleArticle.category}</div>}
         <h4>{singleArticle.title}</h4>
         <p>{singleArticle.author}</p>
-        <p>{singleArticle.updatedAt}</p>
-      </div>
+        <time>{singleArticle.updatedAt}</time>
+      </StyledComponents.CardWrapper>
 
-      <ButtonContainer>
+      <StyledComponents.ButtonContainer>
         {isAdmin && (
           <Link
             key={singleArticle.id}
             href={`/edit-article/${singleArticle.id}`}
           >
-            <ButtonStyle>Edit</ButtonStyle>
+            <StyledComponents.ButtonStyle>Edit</StyledComponents.ButtonStyle>
           </Link>
         )}
-        {isAdmin && <ButtonStyle>Delete</ButtonStyle>}
-      </ButtonContainer>
-    </ArticleCardStyle>
+        {isAdmin && (
+          <StyledComponents.ButtonStyle>Delete</StyledComponents.ButtonStyle>
+        )}
+      </StyledComponents.ButtonContainer>
+    </StyledComponents.ArticleCardStyle>
   );
 };
 

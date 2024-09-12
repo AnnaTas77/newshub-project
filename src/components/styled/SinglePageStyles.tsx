@@ -12,7 +12,7 @@ export const MainStyle = styled.main`
   font-family: Arial, sans-serif;
 
   article {
-    padding:15px;
+    padding: 15px;
     min-width: 100%;
   }
 
@@ -25,36 +25,30 @@ export const MainStyle = styled.main`
   h4 {
     font-size: 2rem;
     margin: 10px 0;
-    color: #333;
   }
 
   p {
-    font-size: 1rem; 
     line-height: 1.6;
-    color: #555; /
-    margin: 5px 0; 
+    margin: 5px 0;
   }
 `;
 
 export const CategoryStyle = styled.p`
   font-weight: bold;
-  color: #333;
+  color: #30a3c0;
   margin-bottom: 10px;
   font-size: 1.1rem;
 `;
 
 export const ByStyle = styled.p`
   font-weight: light;
-  color: #333;
 `;
 
 export const SpanStyle = styled.span`
   font-weight: bold;
-  color: #333;
 `;
 export const UpdatedAtStyle = styled.p`
   font-size: 0.9rem;
-  color: #999;
   font-family: cursive;
 `;
 

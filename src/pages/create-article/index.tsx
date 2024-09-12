@@ -1,7 +1,7 @@
 import React, { useState, FormEvent, ChangeEvent } from "react";
 import Head from "next/head";
 import { useRouter } from "next/router";
-import * as Components from "../../components/styled/CreateArticleStyles";
+import * as StyledComponents from "../../components/styled/CreateArticleStyles";
 
 interface FormData {
   category: string;
@@ -74,18 +74,18 @@ const CreateArticlePage: React.FC = () => {
         />
       </Head>
       <main>
-        <Components.FormContainer>
+        <StyledComponents.FormContainer>
           {isError ? (
-            <Components.ErrorStyle>{isError}</Components.ErrorStyle>
+            <StyledComponents.ErrorStyle>{isError}</StyledComponents.ErrorStyle>
           ) : (
-            <Components.ErrorStyle></Components.ErrorStyle>
+            <StyledComponents.ErrorStyle></StyledComponents.ErrorStyle>
           )}
-          <Components.Form onSubmit={handleSubmit}>
-            <Components.CategoryContainer>
-              <Components.Legend>Category</Components.Legend>
+          <StyledComponents.Form onSubmit={handleSubmit}>
+            <StyledComponents.CategoryContainer>
+              <StyledComponents.Legend>Category</StyledComponents.Legend>
               {categories.map((category) => (
                 <div key={category}>
-                  <Components.CategoryInput
+                  <StyledComponents.CategoryInput
                     required
                     type="radio"
                     id={category}
@@ -94,15 +94,17 @@ const CreateArticlePage: React.FC = () => {
                     checked={category === formData.category}
                     onChange={handleChange}
                   />
-                  <Components.CategoryLabel htmlFor={category}>
+                  <StyledComponents.CategoryLabel htmlFor={category}>
                     {category}
-                  </Components.CategoryLabel>
+                  </StyledComponents.CategoryLabel>
                 </div>
               ))}
-            </Components.CategoryContainer>
+            </StyledComponents.CategoryContainer>
 
-            <Components.Label htmlFor="title">Title</Components.Label>
-            <Components.Input
+            <StyledComponents.Label htmlFor="title">
+              Title
+            </StyledComponents.Label>
+            <StyledComponents.Input
               required
               type="text"
               name="title"
@@ -111,8 +113,10 @@ const CreateArticlePage: React.FC = () => {
               onChange={handleChange}
             />
 
-            <Components.Label htmlFor="author">Author</Components.Label>
-            <Components.Input
+            <StyledComponents.Label htmlFor="author">
+              Author
+            </StyledComponents.Label>
+            <StyledComponents.Input
               required
               type="text"
               name="author"
@@ -121,8 +125,10 @@ const CreateArticlePage: React.FC = () => {
               onChange={handleChange}
             />
 
-            <Components.Label htmlFor="content">Content</Components.Label>
-            <Components.Textarea
+            <StyledComponents.Label htmlFor="content">
+              Content
+            </StyledComponents.Label>
+            <StyledComponents.Textarea
               required
               name="content"
               id="content"
@@ -130,8 +136,10 @@ const CreateArticlePage: React.FC = () => {
               onChange={handleChange}
             />
 
-            <Components.Label htmlFor="image">Image</Components.Label>
-            <Components.Input
+            <StyledComponents.Label htmlFor="image">
+              Image
+            </StyledComponents.Label>
+            <StyledComponents.Input
               required
               type="text"
               name="image"
@@ -140,11 +148,11 @@ const CreateArticlePage: React.FC = () => {
               onChange={handleChange}
             />
 
-            <Components.GreenButton type="submit">
+            <StyledComponents.GreenButton type="submit">
               Publish
-            </Components.GreenButton>
-          </Components.Form>
-        </Components.FormContainer>
+            </StyledComponents.GreenButton>
+          </StyledComponents.Form>
+        </StyledComponents.FormContainer>
       </main>
     </>
   );

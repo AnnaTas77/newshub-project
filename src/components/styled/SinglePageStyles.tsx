@@ -13,13 +13,14 @@ export const MainStyle = styled.main`
 
   article {
     padding: 15px;
-    min-width: 100%;
+    width: 95%;
   }
 
   img {
-    margin: 0 auto;
-    width: 100%;
+    width: 80%;
     height: auto;
+    margin: 0 auto;
+    display: flex;
   }
 
   h4 {
@@ -29,27 +30,27 @@ export const MainStyle = styled.main`
 
   p {
     line-height: 1.6;
-    margin: 5px 0;
+    margin: 1rem 0;
   }
 `;
 
 export const CategoryStyle = styled.p`
   font-weight: bold;
   color: #30a3c0;
-  margin-bottom: 10px;
   font-size: 1.1rem;
 `;
 
-export const ByStyle = styled.p`
+export const ByStyle = styled.div`
   font-weight: light;
 `;
 
 export const SpanStyle = styled.span`
   font-weight: bold;
 `;
-export const UpdatedAtStyle = styled.p`
+export const UpdatedAtStyle = styled.div`
   font-size: 0.9rem;
   font-family: cursive;
+  margin: 0;
 `;
 
 export const WrapperStyle = styled.div`

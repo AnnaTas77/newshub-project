@@ -6,8 +6,8 @@ export const ArticleCardStyle = styled.div<{ isAdmin: boolean }>`
   justify-content: flex-start;
   border-radius: 8px;
   padding: 10px;
-  min-height: ${({ isAdmin }) => (isAdmin ? "none" : "400px")};
-  width: ${({ isAdmin }) => (isAdmin ? "70%" : "none")};
+  min-height: ${({ isAdmin }) => (isAdmin ? "none" : "420px")};
+  width: ${({ isAdmin }) => (isAdmin ? "80%" : "none")};
   border: ${({ isAdmin }) => (isAdmin ? "1px solid #8080807a" : "none")};
   transition: box-shadow 0.3s ease, border 0.3s ease;
   &:hover {
@@ -42,6 +42,7 @@ export const ButtonStyle = styled.button`
   transform: translateZ(0) scale(1);
   transition: transform 0.2s;
   width: 80px;
+  font-weight: bold;
   align-text: center;
   text-align: center;
   &:hover {

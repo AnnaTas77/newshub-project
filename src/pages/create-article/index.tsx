@@ -1,104 +1,7 @@
 import React, { useState, FormEvent, ChangeEvent } from "react";
 import Head from "next/head";
-import styled from "@emotion/styled";
 import { useRouter } from "next/router";
-
-const FormContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  height: 100%;
-  margin-top: 150px;
-`;
-
-const Form = styled.form`
-  margin: 0 auto;
-  width: 50%;
-  display: flex;
-  flex-direction: column;
-  border: 2px solid #ced4da;
-  background-color: rgba(255, 255, 255, 0.773);
-  border-radius: 8px;
-  padding: 18px 18px;
-  min-width: 460px;
-`;
-const Label = styled.label`
-  font-size: 1.2rem;
-  font-weight: bold;
-`;
-const Input = styled.input`
-  width: 100%;
-  padding: 12px 20px;
-  margin: 16px 0;
-  border: 1px solid #ced4da;
-  border-radius: 4px;
-  box-sizing: border-box;
-  font-size: 1rem;
-`;
-
-const Legend = styled.legend`
-  font-size: 1.2rem;
-  font-weight: bold;
-  padding: 0 5px;
-`;
-
-const CategoryContainer = styled.fieldset`
-  display: flex;
-  justify-content: center;
-  gap: 0.9rem;
-  padding: 10px 0;
-  margin-bottom: 18px;
-  text-align: center;
-`;
-
-const CategoryInput = styled.input`
-  padding: 12px 20px;
-  margin: 10px 5px 5px 0;
-`;
-
-const CategoryLabel = styled.label`
-  font-size: 1.1rem;
-  font-weight: bold;
-`;
-
-const Textarea = styled.textarea`
-  width: 100%;
-  padding: 12px 20px;
-  margin: 16px 0;
-  max-width: 100%;
-  min-width: 100%;
-  display: inline-block;
-  border: 1px solid #ced4da;
-  border-radius: 4px;
-  box-sizing: border-box;
-  font-size: 1rem;
-`;
-
-const ErrorStyle = styled.h3`
-  color: #e20b0b;
-  padding: 0 0 20px;
-  height: 20px;
-`;
-
-const GreenButton = styled.button`
-  width: 30%;
-  margin: 0 auto;
-  background-color: #13aa52;
-  border: none;
-  border-radius: 4px;
-  box-shadow: rgba(0, 0, 0, 0.1) 0 2px 4px 0;
-  color: #fff;
-  cursor: pointer;
-  font-size: 1.2rem;
-  padding: 10px 25px;
-  text-align: center;
-  transform: translateY(0);
-  transition: transform 150ms, box-shadow 150ms;
-  &:hover {
-    box-shadow: rgba(0, 0, 0, 0.15) 0 3px 9px 0;
-    transform: translateY(-2px);
-  }
-`;
+import * as Components from "../../components/styled/CreateArticleStyles";
 
 interface FormData {
   category: string;
@@ -171,18 +74,18 @@ const CreateArticlePage: React.FC = () => {
         />
       </Head>
       <main>
-        <FormContainer>
+        <Components.FormContainer>
           {isError ? (
-            <ErrorStyle>{isError}</ErrorStyle>
+            <Components.ErrorStyle>{isError}</Components.ErrorStyle>
           ) : (
-            <ErrorStyle></ErrorStyle>
+            <Components.ErrorStyle></Components.ErrorStyle>
           )}
-          <Form onSubmit={handleSubmit}>
-            <CategoryContainer>
-              <Legend>Category</Legend>
+          <Components.Form onSubmit={handleSubmit}>
+            <Components.CategoryContainer>
+              <Components.Legend>Category</Components.Legend>
               {categories.map((category) => (
                 <div key={category}>
-                  <CategoryInput
+                  <Components.CategoryInput
                     required
                     type="radio"
                     id={category}
@@ -191,13 +94,15 @@ const CreateArticlePage: React.FC = () => {
                     checked={category === formData.category}
                     onChange={handleChange}
                   />
-                  <CategoryLabel htmlFor={category}>{category}</CategoryLabel>
+                  <Components.CategoryLabel htmlFor={category}>
+                    {category}
+                  </Components.CategoryLabel>
                 </div>
               ))}
-            </CategoryContainer>
+            </Components.CategoryContainer>
 
-            <Label htmlFor="title">Title</Label>
-            <Input
+            <Components.Label htmlFor="title">Title</Components.Label>
+            <Components.Input
               required
               type="text"
               name="title"
@@ -206,8 +111,8 @@ const CreateArticlePage: React.FC = () => {
               onChange={handleChange}
             />
 
-            <Label htmlFor="author">Author</Label>
-            <Input
+            <Components.Label htmlFor="author">Author</Components.Label>
+            <Components.Input
               required
               type="text"
               name="author"
@@ -216,8 +121,8 @@ const CreateArticlePage: React.FC = () => {
               onChange={handleChange}
             />
 
-            <Label htmlFor="content">Content</Label>
-            <Textarea
+            <Components.Label htmlFor="content">Content</Components.Label>
+            <Components.Textarea
               required
               name="content"
               id="content"
@@ -225,8 +130,8 @@ const CreateArticlePage: React.FC = () => {
               onChange={handleChange}
             />
 
-            <Label htmlFor="image">Image</Label>
-            <Input
+            <Components.Label htmlFor="image">Image</Components.Label>
+            <Components.Input
               required
               type="text"
               name="image"
@@ -235,9 +140,11 @@ const CreateArticlePage: React.FC = () => {
               onChange={handleChange}
             />
 
-            <GreenButton type="submit">Publish</GreenButton>
-          </Form>
-        </FormContainer>
+            <Components.GreenButton type="submit">
+              Publish
+            </Components.GreenButton>
+          </Components.Form>
+        </Components.FormContainer>
       </main>
     </>
   );

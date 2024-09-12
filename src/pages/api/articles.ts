@@ -23,7 +23,7 @@ export default async function handler(
       if (!articles.length) {
         return res.status(404).json({ message: "No articles found." });
       }
-      res.status(200).json(articles);
+      return res.status(200).json(articles);
     }
 
     if (req.method === "POST") {
@@ -49,10 +49,10 @@ export default async function handler(
       }
 
       const createdArticle = await Article.create(newArticle);
-      res.status(201).json(createdArticle);
+      return res.status(201).json(createdArticle);
     }
   } catch (error: any) {
     console.error("Error fetching article:", error.message);
-    res.status(500).json({ message: "Internal Server Error." });
+    return res.status(500).json({ message: "Internal Server Error." });
   }
 }

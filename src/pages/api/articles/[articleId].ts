@@ -31,7 +31,18 @@ export default async function handler(
         return res.status(400).json({ message: "Article not found." });
       }
 
-      res.status(200).json(article);
+      return res.status(200).json(article);
+    }
+
+    if (req.method === "PUT") {
+      const { articleId } = req.query;
+      const editedArticle = req.body;
+
+      await Article.update(editedArticle, {
+        where: { id: articleId },
+      });
+
+      return res.status(200).json({ message: "Article updated successfully." });
     }
   } catch (error: any) {
     console.error("Error fetching article:", error.message);

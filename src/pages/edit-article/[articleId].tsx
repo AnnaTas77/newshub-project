@@ -2,15 +2,21 @@ import React, { useState, FormEvent, ChangeEvent } from "react";
 import Head from "next/head";
 import { FormData } from "@/types/global";
 import { useRouter } from "next/router";
+import Article from "../../../db/models/Article";
 import * as StyledComponents from "../../components/styled/CreateArticleStyles";
+import { ArticleData } from "@/types/global";
 
-const CreateArticlePage: React.FC = () => {
+interface EditArticleProps {
+  currentArticle: ArticleData;
+}
+
+const EditArticlePage: React.FC<EditArticleProps> = ({ currentArticle }) => {
   const [formData, setFormData] = useState<FormData>({
-    category: "",
-    title: "",
-    author: "",
-    content: "",
-    image: "",
+    category: currentArticle.category,
+    title: currentArticle.title,
+    author: currentArticle.author,
+    content: currentArticle.content,
+    image: currentArticle.image,
   });
 
   const [isError, setIsError] = useState<string | null>(null);
@@ -18,6 +24,8 @@ const CreateArticlePage: React.FC = () => {
   const categories = ["tech", "culture", "sports", "economy", "climate"];
 
   const router = useRouter();
+  const { articleId } = router.query;
+  console.log(articleId);
 
   const handleChange = (
     event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -27,11 +35,10 @@ const CreateArticlePage: React.FC = () => {
 
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    setIsError(null); // Clear previous errors when a new request starts
 
     try {
-      const response = await fetch("api/articles", {
-        method: "POST",
+      const response = await fetch(`/api/articles/${articleId}`, {
+        method: "PUT",
         headers: {
           "Content-Type": "application/json",
         },
@@ -42,20 +49,7 @@ const CreateArticlePage: React.FC = () => {
         throw new Error("Failed to submit the data. Please try again.");
       }
       router.push("/admin");
-    } catch (error: any) {
-      setIsError("Failed to submit the data. Please try again.");
-      console.error(error);
-      setTimeout(() => {
-        setIsError(null);
-        setFormData({
-          category: "",
-          title: "",
-          author: "",
-          content: "",
-          image: "",
-        });
-      }, 3000);
-    }
+    } catch {}
   };
 
   return (
@@ -64,7 +58,7 @@ const CreateArticlePage: React.FC = () => {
         <title>NewsHub - Admin</title>
         <meta
           name="description"
-          content="Provides a form that enables authors and editors to easily submit new articles"
+          content="Provides a form that enables authors and editors to easily edit articles"
         />
       </Head>
       <main>
@@ -85,7 +79,7 @@ const CreateArticlePage: React.FC = () => {
                     id={category}
                     name="category"
                     value={category}
-                    checked={category === formData.category}
+                    checked={formData.category === category}
                     onChange={handleChange}
                   />
                   <StyledComponents.CategoryLabel htmlFor={category}>
@@ -152,4 +146,34 @@ const CreateArticlePage: React.FC = () => {
   );
 };
 
-export default CreateArticlePage;
+export async function getServerSideProps(context: any) {
+  const { articleId } = context.params;
+  const article = await Article.findByPk(articleId);
+  if (!article) {
+    return {
+      notFound: true,
+    };
+  }
+  const currentArticle = {
+    id: article.id,
+    title: article.title,
+    content: article.content,
+    author: article.author,
+    category: article.category,
+    image: article.image,
+    createdAt: article.createdAt.toLocaleString("en-GB", {
+      day: "numeric",
+      month: "long",
+      year: "numeric",
+    }),
+    updatedAt: article.updatedAt.toLocaleString("en-GB", {
+      day: "numeric",
+      month: "long",
+      year: "numeric",
+    }),
+  };
+
+  return { props: { currentArticle } };
+}
+
+export default EditArticlePage;

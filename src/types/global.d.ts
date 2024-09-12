@@ -8,3 +8,11 @@ export interface ArticleData {
   createdAt?: string;
   updatedAt?: string;
 }
+
+export interface FormData {
+  category: string;
+  title: string;
+  author: string;
+  content: string;
+  image: string;
+}

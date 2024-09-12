@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import styled from "@emotion/styled";
 import Image from "next/image";
 import { ArticleData } from "@/types/global";
+import Link from "next/link";
 
 const ArticleCardStyle = styled.div<{ isAdmin: boolean }>`
   display: flex;
@@ -92,7 +93,14 @@ const ArticleCard: React.FC<ArticleCardProps> = ({
       </div>
 
       <ButtonContainer>
-        {isAdmin && <ButtonStyle>Edit</ButtonStyle>}
+        {isAdmin && (
+          <Link
+            key={singleArticle.id}
+            href={`/edit-article/${singleArticle.id}`}
+          >
+            <ButtonStyle>Edit</ButtonStyle>
+          </Link>
+        )}
         {isAdmin && <ButtonStyle>Delete</ButtonStyle>}
       </ButtonContainer>
     </ArticleCardStyle>

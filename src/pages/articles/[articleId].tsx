@@ -28,6 +28,7 @@ const SingleArticlePage: React.FC<CurrentArticleProps> = ({
 
   // Determine the image source
   const imageSrc = isValidImagePath(image) ? image : defaultImage;
+
   return (
     <>
       <Head>
@@ -39,7 +40,13 @@ const SingleArticlePage: React.FC<CurrentArticleProps> = ({
       </Head>
       <StyledComponents.MainStyle>
         <article>
-          <Image src={imageSrc} alt="Article Image" width={250} height={250} />
+          <Image
+            src={imageSrc}
+            alt="Article Image"
+            width={250}
+            height={250}
+            onError={handleError}
+          />
           <StyledComponents.CategoryStyle>
             {currentArticle.category}
           </StyledComponents.CategoryStyle>

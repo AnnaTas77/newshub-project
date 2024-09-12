@@ -37,7 +37,7 @@ export default async function handler(
 
       const newArticle = req.body;
 
-      // Validate the new article data
+      // Validates the new article data
       for (const field of requiredFields) {
         if (!newArticle.hasOwnProperty(field)) {
           return res.status(400).json({
@@ -51,7 +51,8 @@ export default async function handler(
       const createdArticle = await Article.create(newArticle);
       res.status(201).json(createdArticle);
     }
-  } catch (error) {
+  } catch (error: any) {
+    console.error("Error fetching article:", error.message);
     res.status(500).json({ message: "Internal Server Error." });
   }
 }

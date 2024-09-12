@@ -22,17 +22,19 @@ export default async function handler(
       const { articleId } = req.query;
 
       if (typeof articleId !== "string") {
-        return res.status(400).json({ message: "Invalid article ID" });
+        return res.status(400).json({ message: "Invalid article ID." });
       }
 
       const article = await Article.findByPk(articleId);
 
       if (!article) {
-        res.status(400).json({ message: "Article not found." });
-        return;
+        return res.status(400).json({ message: "Article not found." });
       }
 
       res.status(200).json(article);
     }
-  } catch (error) {}
+  } catch (error: any) {
+    console.error("Error fetching article:", error.message);
+    res.status(500).json({ message: "Internal Server Error." });
+  }
 }

@@ -108,7 +108,7 @@ interface FormData {
   image: string;
 }
 
-const CreateArticlePage = () => {
+const CreateArticlePage: React.FC = () => {
   const [formData, setFormData] = useState<FormData>({
     category: "",
     title: "",
@@ -117,7 +117,6 @@ const CreateArticlePage = () => {
     image: "",
   });
 
-  const [isLoading, setIsLoading] = useState<boolean>(false);
   const [isError, setIsError] = useState<string | null>(null);
 
   const categories = ["tech", "culture", "sports", "economy", "climate"];
@@ -131,8 +130,6 @@ const CreateArticlePage = () => {
 
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-
-    setIsLoading(true);
     setIsError(null); // Clear previous errors when a new request starts
 
     try {
@@ -147,10 +144,8 @@ const CreateArticlePage = () => {
       if (!response.ok) {
         throw new Error("Failed to submit the data. Please try again.");
       }
-
       router.push("/admin");
     } catch (error: any) {
-      // Capture the error message to display to the user
       setIsError("Failed to submit the data. Please try again.");
       console.error(error);
       setTimeout(() => {

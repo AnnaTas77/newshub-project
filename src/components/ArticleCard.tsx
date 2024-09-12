@@ -50,7 +50,7 @@ const ArticleCard: React.FC<ArticleCardProps> = ({
         <StyledComponents.TimeContainer>
           {" "}
           {isAdmin ? (
-            <time>Last updated: {singleArticle.updatedAt}</time>
+            <time>Last updated on: {singleArticle.updatedAt}</time>
           ) : (
             <time>{singleArticle.updatedAt}</time>
           )}

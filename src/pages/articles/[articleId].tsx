@@ -3,71 +3,7 @@ import Head from "next/head";
 import { ArticleData } from "@/types/global";
 import Image from "next/image";
 import Article from "../../../db/models/Article";
-import styled from "@emotion/styled";
-
-const MainStyle = styled.main`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: 120px auto 0 auto;
-  max-width: 1000px;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  font-family: Arial, sans-serif;
-
-  article {
-    padding:15px;
-    min-width: 100%;
-  }
-
-  img {
-    margin: 0 auto;
-    width: 100%;
-    height: auto;
-  }
-
-  h4 {
-    font-size: 2rem;
-    margin: 10px 0;
-    color: #333;
-  }
-
-  p {
-    font-size: 1rem; 
-    line-height: 1.6;
-    color: #555; /
-    margin: 5px 0; 
-  }
-`;
-
-const CategoryStyle = styled.p`
-  font-weight: bold;
-  color: #333;
-  margin-bottom: 10px;
-  font-size: 1.1rem;
-`;
-
-const ByStyle = styled.p`
-  font-weight: light;
-  color: #333;
-`;
-
-const SpanStyle = styled.span`
-  font-weight: bold;
-  color: #333;
-`;
-const UpdatedAtStyle = styled.p`
-  font-size: 0.9rem;
-  color: #999;
-  font-family: cursive;
-`;
-
-const WrapperStyle = styled.div`
-  display: flex;
-  margin: 25px 25px 25px 0;
-  flex-direction: column;
-`;
+import * as StyledComponents from "../../components/styled/SinglePageStyles";
 
 interface CurrentArticleProps {
   currentArticle: ArticleData;
@@ -101,21 +37,28 @@ const SingleArticlePage: React.FC<CurrentArticleProps> = ({
           content="Provides a form that enables authors and editors to easily submit new articles"
         />
       </Head>
-      <MainStyle>
+      <StyledComponents.MainStyle>
         <article>
           <Image src={imageSrc} alt="Article Image" width={250} height={250} />
-          <CategoryStyle>{currentArticle.category}</CategoryStyle>
+          <StyledComponents.CategoryStyle>
+            {currentArticle.category}
+          </StyledComponents.CategoryStyle>
           <h4>{currentArticle.title}</h4>
-          <WrapperStyle>
-            <ByStyle>
-              By <SpanStyle>{currentArticle.author}</SpanStyle>
-            </ByStyle>
-            <UpdatedAtStyle>{currentArticle.updatedAt}</UpdatedAtStyle>
-          </WrapperStyle>
+          <StyledComponents.WrapperStyle>
+            <StyledComponents.ByStyle>
+              By{" "}
+              <StyledComponents.SpanStyle>
+                {currentArticle.author}
+              </StyledComponents.SpanStyle>
+            </StyledComponents.ByStyle>
+            <StyledComponents.UpdatedAtStyle>
+              {currentArticle.updatedAt}
+            </StyledComponents.UpdatedAtStyle>
+          </StyledComponents.WrapperStyle>
 
           <div dangerouslySetInnerHTML={{ __html: currentArticle.content }} />
         </article>
-      </MainStyle>
+      </StyledComponents.MainStyle>
     </>
   );
 };

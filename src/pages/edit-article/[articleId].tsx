@@ -45,10 +45,16 @@ const EditArticlePage: React.FC<EditArticleProps> = ({ currentArticle }) => {
       });
 
       if (!response.ok) {
-        throw new Error("Failed to submit the data. Please try again.");
+        throw new Error("Failed to publish the article. Please try again.");
       }
       router.push("/admin");
-    } catch {}
+    } catch (error: any) {
+      setIsError("Failed to publish the article. Please try again.");
+      console.error(error);
+      setTimeout(() => {
+        setIsError(null);
+      }, 3000);
+    }
   };
 
   return (

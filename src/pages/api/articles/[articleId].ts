@@ -35,8 +35,27 @@ export default async function handler(
     }
 
     if (req.method === "PUT") {
+      const requiredFields = [
+        "category",
+        "title",
+        "author",
+        "content",
+        "image",
+      ];
+
       const { articleId } = req.query;
       const editedArticle = req.body;
+
+        // Validation of the data
+        for (const field of requiredFields) {
+          if (!editedArticle.hasOwnProperty(field)) {
+            return res.status(400).json({
+              message: `${
+                field.charAt(0).toUpperCase() + field.slice(1)
+              } is required.`,
+            });
+          }
+        }
 
       await Article.update(editedArticle, {
         where: { id: articleId },

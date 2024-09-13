@@ -39,11 +39,11 @@ const CreateArticlePage: React.FC = () => {
       });
 
       if (!response.ok) {
-        throw new Error("Failed to submit the data. Please try again.");
+        throw new Error("Failed to publish the article. Please try again.");
       }
       router.push("/admin");
     } catch (error: any) {
-      setIsError("Failed to submit the data. Please try again.");
+      setIsError("Failed to publish the article. Please try again.");
       console.error(error);
       setTimeout(() => {
         setIsError(null);

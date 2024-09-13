@@ -3,6 +3,7 @@ import Image from "next/image";
 import { ArticleData } from "@/types/global";
 import Link from "next/link";
 import * as StyledComponents from "../components/styled/ArticleCardStyles";
+import { useRouter } from "next/router";
 
 interface ArticleCardProps {
   singleArticle: ArticleData;
@@ -15,6 +16,8 @@ const ArticleCard: React.FC<ArticleCardProps> = ({
 }) => {
   const [image, setImage] = useState<string>(singleArticle.image);
   const defaultImage = "/images/default-news.jpg";
+
+  const router = useRouter();
 
   const handleError = () => {
     setImage(defaultImage);
@@ -29,6 +32,12 @@ const ArticleCard: React.FC<ArticleCardProps> = ({
 
   // Determine the image source
   const imageSrc = isValidImagePath(image) ? image : defaultImage;
+
+  const handleDelete = async () => {
+    await fetch(`/api/articles/${singleArticle.id}`, { method: "DELETE" });
+    //reloads the admin page
+    router.reload();
+  };
 
   return (
     <StyledComponents.ArticleCardStyle isAdmin={isAdmin}>
@@ -68,7 +77,9 @@ const ArticleCard: React.FC<ArticleCardProps> = ({
           </Link>
         )}
         {isAdmin && (
-          <StyledComponents.ButtonStyle>Delete</StyledComponents.ButtonStyle>
+          <StyledComponents.ButtonStyle onClick={handleDelete}>
+            Delete
+          </StyledComponents.ButtonStyle>
         )}
       </StyledComponents.ButtonContainer>
     </StyledComponents.ArticleCardStyle>

@@ -18,7 +18,7 @@ const HomePage: React.FC<HomeProps> = ({ articleData }) => {
           content="NewsHub - stay updated with the latest news, articles, and insights from around the world."
         />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/newshub-icon.ico" />
       </Head>
       <StyledComponents.MainStyle>
         <ArticleList articleData={articleData} isAdmin={false} />

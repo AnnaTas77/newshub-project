@@ -2,8 +2,7 @@ import styled from "@emotion/styled";
 
 export const NavContainer = styled.nav`
   display: flex;
-  padding: 1rem 0;
-  justify-content: flex-end;
+  justify-content: space-between;
   align-items: center;
   border-bottom: 1px solid #ced4da;
   position: fixed;
@@ -12,6 +11,11 @@ export const NavContainer = styled.nav`
   background: white;
   z-index: 100;
   box-shadow: rgba(0, 0, 0, 0.14) 0px 3px 6px;
+
+  img {
+    margin-left: 10px;
+    padding: 8px;
+  }
 `;
 
 export const NavbarList = styled.ul`
@@ -19,7 +23,7 @@ export const NavbarList = styled.ul`
   align-items: center;
   list-style: none;
   padding: 0;
-  margin: 0 20px;
+  margin: 0 25px;
   gap: 30px;
 `;
 
@@ -39,5 +43,6 @@ export const Button = styled.button`
   transition: transform 150ms;
   &:hover {
     transform: translateY(-2px);
+    background-color: #0cc0df;
   }
 `;

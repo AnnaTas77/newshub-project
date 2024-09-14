@@ -11,6 +11,7 @@ export const NavContainer = styled.nav`
   top: 0;
   background: white;
   z-index: 100;
+  box-shadow: rgba(0, 0, 0, 0.14) 0px 3px 6px;
 `;
 
 export const NavbarList = styled.ul`

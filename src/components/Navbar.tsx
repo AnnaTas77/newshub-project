@@ -7,12 +7,12 @@ const Navbar: React.FC = () => {
     <StyledComponents.NavContainer>
       <StyledComponents.NavbarList>
         <li>
-          <Link href="/">
+          <Link href="/" scroll={true}>
             <StyledComponents.Button>Home</StyledComponents.Button>
           </Link>
         </li>
         <li>
-          <Link href="/admin">
+          <Link href="/admin" scroll={true}>
             <StyledComponents.Button>Admin</StyledComponents.Button>
           </Link>
         </li>

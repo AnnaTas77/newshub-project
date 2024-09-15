@@ -3,7 +3,7 @@ import Head from "next/head";
 import { FormData } from "@/types/global";
 import { useRouter } from "next/router";
 import Article from "../../../db/models/Article";
-import * as StyledComponents from "../../components/styled/CreateArticleStyles";
+import * as StyledComponents from "../../components/styled/FormStyles";
 import { ArticleData } from "@/types/global";
 
 interface EditArticleProps {
@@ -66,7 +66,7 @@ const EditArticlePage: React.FC<EditArticleProps> = ({ currentArticle }) => {
           content="Provides a form that enables authors and editors to easily edit articles"
         />
       </Head>
-      <main>
+      <StyledComponents.MainStyle>
         <StyledComponents.FormContainer>
           {isError ? (
             <StyledComponents.ErrorStyle>{isError}</StyledComponents.ErrorStyle>
@@ -146,7 +146,7 @@ const EditArticlePage: React.FC<EditArticleProps> = ({ currentArticle }) => {
             </StyledComponents.GreenButton>
           </StyledComponents.Form>
         </StyledComponents.FormContainer>
-      </main>
+      </StyledComponents.MainStyle>
     </>
   );
 };

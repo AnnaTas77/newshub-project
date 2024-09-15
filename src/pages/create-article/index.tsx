@@ -2,7 +2,7 @@ import React, { useState, FormEvent, ChangeEvent } from "react";
 import Head from "next/head";
 import { FormData } from "@/types/global";
 import { useRouter } from "next/router";
-import * as StyledComponents from "../../components/styled/CreateArticleStyles";
+import * as StyledComponents from "../../components/styled/FormStyles";
 
 const CreateArticlePage: React.FC = () => {
   const [formData, setFormData] = useState<FormData>({
@@ -67,7 +67,7 @@ const CreateArticlePage: React.FC = () => {
           content="Provides a form that enables authors and editors to easily submit new articles"
         />
       </Head>
-      <main>
+      <StyledComponents.MainStyle>
         <StyledComponents.FormContainer>
           {isError ? (
             <StyledComponents.ErrorStyle>{isError}</StyledComponents.ErrorStyle>
@@ -147,7 +147,7 @@ const CreateArticlePage: React.FC = () => {
             </StyledComponents.GreenButton>
           </StyledComponents.Form>
         </StyledComponents.FormContainer>
-      </main>
+      </StyledComponents.MainStyle>
     </>
   );
 };

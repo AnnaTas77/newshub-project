@@ -1,5 +1,11 @@
 import styled from "@emotion/styled";
 
+export const MainStyle = styled.main`
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 50px;
+`;
+
 export const FormContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -13,11 +19,11 @@ export const Form = styled.form`
   width: 50%;
   display: flex;
   flex-direction: column;
-  border: 2px solid #ced4da;
-  background-color: rgba(255, 255, 255, 0.773);
+  border: 1px solid #ced4da;
   border-radius: 8px;
   padding: 18px 18px;
   min-width: 460px;
+  box-shadow: rgb(82 81 81 / 34%) 0px 2px 8px 0px;
 `;
 export const Label = styled.label`
   font-size: 1.2rem;
@@ -79,7 +85,7 @@ export const ErrorStyle = styled.h3`
 
 export const GreenButton = styled.button`
   width: 30%;
-  margin: 0 auto;
+  margin: 5px auto 0;
   background-color: #13aa52;
   border: none;
   border-radius: 4px;

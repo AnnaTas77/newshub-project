@@ -11,7 +11,8 @@ export const ArticleContainerStyle = styled.section<{ isAdmin: boolean }>`
   padding: 25px 10px;
   gap: 5px;
   justify-content: center;
-  width: 60%;
+  width: 75%;
+  max-width: ${({ isAdmin }) => (isAdmin ? "1000px" : "none")};
   align-items: center;
   margin: 30px 0;
 `;

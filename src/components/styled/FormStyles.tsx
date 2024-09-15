@@ -22,7 +22,8 @@ export const Form = styled.form`
   border: 1px solid #ced4da;
   border-radius: 8px;
   padding: 18px 18px;
-  min-width: 460px;
+  max-width: 800px;
+  min-width: 367px;
   box-shadow: rgb(82 81 81 / 34%) 0px 2px 8px 0px;
 `;
 export const Label = styled.label`

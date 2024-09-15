@@ -21,7 +21,7 @@ export const Copyright = styled.p`
 export const SocialIcons = styled.div`
   display: flex;
   justify-content: center;
-  gap: 15px;
+  gap: 35px;
   margin-top: 10px;
 `;
 export const IconLink = styled.a`

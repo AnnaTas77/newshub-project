@@ -2,19 +2,12 @@ import Link from "next/link";
 import React from "react";
 import * as StyledComponents from "../components/styled/NavbarStyles";
 import Image from "next/image";
+import Logo from "./Logo";
 
 const Navbar: React.FC = () => {
   return (
     <StyledComponents.NavContainer>
-      <Link href="/" passHref>
-        <Image
-          src="/newshub_logo_best.png"
-          width={100}
-          height={100}
-          alt="logo"
-        ></Image>
-      </Link>
-
+      <Logo />
       <StyledComponents.NavbarList>
         <li>
           <Link href="/">

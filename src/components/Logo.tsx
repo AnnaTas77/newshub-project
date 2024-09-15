@@ -1,18 +1,15 @@
 import { useRouter } from "next/router";
-import { usePathname } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
 import { MouseEvent } from "react";
 
 const Logo: React.FC = () => {
-  const pathname = usePathname();
   const router = useRouter();
 
   const handleLogoClick = (event: MouseEvent<HTMLAnchorElement>) => {
-    if (pathname === "/") {
+    if (router.pathname === "/") {
       // If on the home page, prevent the default link behavior
       event.preventDefault();
-      // Scroll to the top
       window.scrollTo({ top: 0, behavior: "smooth" });
     }
   };

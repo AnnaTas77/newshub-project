@@ -34,9 +34,15 @@ const ArticleCard: React.FC<ArticleCardProps> = ({
   const imageSrc = isValidImagePath(image) ? image : defaultImage;
 
   const handleDelete = async () => {
-    await fetch(`/api/articles/${singleArticle.id}`, { method: "DELETE" });
-    //reloads the admin page
-    router.reload();
+    const confirmed = window.confirm(
+      "Are you sure you want to delete this article?"
+    );
+
+    if (confirmed) {
+      await fetch(`/api/articles/${singleArticle.id}`, { method: "DELETE" });
+      //reloads the admin page
+      router.reload();
+    }
   };
 
   return (

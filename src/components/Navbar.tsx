@@ -6,12 +6,15 @@ import Image from "next/image";
 const Navbar: React.FC = () => {
   return (
     <StyledComponents.NavContainer>
-      <Image
-        src="/newshub_logo_best.png"
-        width={100}
-        height={100}
-        alt="logo"
-      ></Image>
+      <Link href="/" passHref>
+        <Image
+          src="/newshub_logo_best.png"
+          width={100}
+          height={100}
+          alt="logo"
+        ></Image>
+      </Link>
+
       <StyledComponents.NavbarList>
         <li>
           <Link href="/">

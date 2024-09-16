@@ -3,12 +3,23 @@ import Article from "../../db/models/Article";
 import ArticleList from "@/components/ArticleList";
 import { ArticleData } from "@/types/global";
 import * as StyledComponents from "../components/styled/HomePageStyles";
+import { useState } from "react";
 
 interface HomeProps {
   articleData: ArticleData[];
 }
 
 const HomePage: React.FC<HomeProps> = ({ articleData }) => {
+  const [selectedCategory, setSelectedCategory] = useState<string>("all");
+
+  const categories = ["all", "culture", "sports", "tech", "economy", "climate"];
+
+  // Filter articles based on selected category
+  const filteredArticles =
+    selectedCategory === "all"
+      ? articleData
+      : articleData.filter((article) => article.category === selectedCategory);
+
   return (
     <>
       <Head>
@@ -21,7 +32,17 @@ const HomePage: React.FC<HomeProps> = ({ articleData }) => {
         <link rel="icon" href="/newshub-icon.ico" />
       </Head>
       <StyledComponents.MainStyle>
-        <ArticleList articleData={articleData} isAdmin={false} />
+        <StyledComponents.CategoryContainer>
+          {categories.map((category) => (
+            <StyledComponents.CategoryButton
+              key={category}
+              onClick={() => setSelectedCategory(category)}
+            >
+              {category}
+            </StyledComponents.CategoryButton>
+          ))}
+        </StyledComponents.CategoryContainer>
+        <ArticleList articleData={filteredArticles} isAdmin={false} />
       </StyledComponents.MainStyle>
     </>
   );

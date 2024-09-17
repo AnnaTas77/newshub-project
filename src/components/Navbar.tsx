@@ -1,22 +1,39 @@
 import Link from "next/link";
-import React from "react";
+import React, { useState } from "react";
 import * as StyledComponents from "../components/styled/NavbarStyles";
-import Image from "next/image";
 import Logo from "./Logo";
 
+type FocusedButton = "home" | "admin";
+
 const Navbar: React.FC = () => {
+  const [focusedButton, setFocusedButton] = useState<FocusedButton>("home");
+
+  const handleButtonClick = (button: FocusedButton) => {
+    setFocusedButton(button);
+  };
+
   return (
     <StyledComponents.NavContainer>
       <Logo />
       <StyledComponents.NavbarList>
         <li>
           <Link href="/">
-            <StyledComponents.Button>Home</StyledComponents.Button>
+            <StyledComponents.Button
+              className={focusedButton === "home" ? "focused" : ""}
+              onClick={() => handleButtonClick("home")}
+            >
+              Home
+            </StyledComponents.Button>
           </Link>
         </li>
         <li>
           <Link href="/admin">
-            <StyledComponents.Button>Admin</StyledComponents.Button>
+            <StyledComponents.Button
+              className={focusedButton === "admin" ? "focused" : ""}
+              onClick={() => handleButtonClick("admin")}
+            >
+              Admin
+            </StyledComponents.Button>
           </Link>
         </li>
       </StyledComponents.NavbarList>

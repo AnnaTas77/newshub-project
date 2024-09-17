@@ -33,9 +33,7 @@ export const Button = styled.button`
   padding: 12px;
   border-radius: 8px;
   border: none;
-  background-color: #30a3c0;
   border: 0;
-  color: #ffffff;
   font-size: 1.2rem;
   min-width: 110px;
   cursor: pointer;
@@ -43,6 +41,11 @@ export const Button = styled.button`
   transition: transform 150ms;
   &:hover {
     transform: translateY(-2px);
+    // background-color: #30a3c0;
+    border: 1px solid #0cc0df;
+  }
+  &.focused {
     background-color: #0cc0df;
+    color: #ffffff;
   }
 `;

@@ -24,7 +24,7 @@ export const CategoryButton = styled.button`
   padding: 8px 10px;
   transform: translateZ(0) scale(1);
   transition: transform 0.2s;
-  width: 100px;
+  // width: 100px;
   font-weight: bold;
   align-text: center;
   text-align: center;
@@ -33,5 +33,8 @@ export const CategoryButton = styled.button`
     transform: scale(1.05);
     background-color: #f3f4f6;
     transition-duration: 0.2s;
+  }
+  &:focus {
+    background-color: #f3f4f6;
   }
 `;

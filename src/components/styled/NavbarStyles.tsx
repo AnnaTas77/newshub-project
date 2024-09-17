@@ -18,6 +18,11 @@ export const NavContainer = styled.nav`
   }
 `;
 
+export const LogoContainerBtn = styled.button`
+  border: none;
+  background-color: unset;
+`;
+
 export const NavbarList = styled.ul`
   display: flex;
   align-items: center;

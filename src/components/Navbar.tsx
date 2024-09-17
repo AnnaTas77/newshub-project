@@ -14,7 +14,11 @@ const Navbar: React.FC = () => {
 
   return (
     <StyledComponents.NavContainer>
-      <Logo />
+      <StyledComponents.LogoContainerBtn
+        onClick={() => handleButtonClick("home")}
+      >
+        <Logo />
+      </StyledComponents.LogoContainerBtn>
       <StyledComponents.NavbarList>
         <li>
           <Link href="/">

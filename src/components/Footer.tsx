@@ -9,38 +9,38 @@ export const Footer: React.FC = () => {
 
   return (
     <StyledComponents.FooterContainer>
-      <StyledComponents.Content>
-        <StyledComponents.Copyright>
+      <StyledComponents.ContentStyles>
+        <StyledComponents.CopyrightStyles>
           &copy; {currentYear} NewsHub{" "}
-          <StyledComponents.SpanStyle>
+          <StyledComponents.SpanStyles>
             <BsDot />
-          </StyledComponents.SpanStyle>{" "}
+          </StyledComponents.SpanStyles>{" "}
           <span>All rights reserved.</span>
-        </StyledComponents.Copyright>
-        <StyledComponents.SocialIcons>
-          <StyledComponents.IconLink
+        </StyledComponents.CopyrightStyles>
+        <StyledComponents.SocialIconsStyles>
+          <StyledComponents.IconLinkStyles
             href="https://twitter.com"
             target="_blank"
             rel="noopener noreferrer"
           >
             <FaXTwitter />
-          </StyledComponents.IconLink>
-          <StyledComponents.IconLink
+          </StyledComponents.IconLinkStyles>
+          <StyledComponents.IconLinkStyles
             href="https://instagram.com"
             target="_blank"
             rel="noopener noreferrer"
           >
             <FaInstagram />
-          </StyledComponents.IconLink>
-          <StyledComponents.IconLink
+          </StyledComponents.IconLinkStyles>
+          <StyledComponents.IconLinkStyles
             href="https://youtube.com"
             target="_blank"
             rel="noopener noreferrer"
           >
             <FaYoutube />
-          </StyledComponents.IconLink>
-        </StyledComponents.SocialIcons>
-      </StyledComponents.Content>
+          </StyledComponents.IconLinkStyles>
+        </StyledComponents.SocialIconsStyles>
+      </StyledComponents.ContentStyles>
     </StyledComponents.FooterContainer>
   );
 };

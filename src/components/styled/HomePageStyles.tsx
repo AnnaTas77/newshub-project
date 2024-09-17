@@ -5,12 +5,13 @@ export const MainStyle = styled.main`
   flex-direction: column;
   align-items: center;
   margin-top: 150px;
+  min-height: 100vh;
 `;
 
 export const CategoryContainer = styled.div`
   display: flex;
   gap: 10px;
-  border-bottom: 1px solid grey;
+  border-bottom: 1px solid #919191;
   padding: 10px;
 `;
 
@@ -34,7 +35,7 @@ export const CategoryButton = styled.button`
     background-color: #f3f4f6;
     transition-duration: 0.2s;
   }
-  &:focus {
-    background-color: #f3f4f6;
+  &.focused {
+    background-color: #edededf2;
   }
 `;

@@ -10,15 +10,28 @@ interface HomeProps {
 }
 
 const HomePage: React.FC<HomeProps> = ({ articleData }) => {
-  const [selectedCategory, setSelectedCategory] = useState<string>("all");
+  const [selectedCategory, setSelectedCategory] = useState<string>("latest");
+  const [focusedCategoryBtn, setFocusedCategoryBtn] =
+    useState<string>("latest");
 
-  const categories = ["all", "culture", "sports", "tech", "economy", "climate"];
+  const categories = [
+    "latest",
+    "culture",
+    "sports",
+    "tech",
+    "economy",
+    "climate",
+  ];
 
   // Filter articles based on selected category
   const filteredArticles =
-    selectedCategory === "all"
+    selectedCategory === "latest"
       ? articleData
       : articleData.filter((article) => article.category === selectedCategory);
+
+  const handleCategoryFocus = (category: string) => {
+    setFocusedCategoryBtn(category);
+  };
 
   return (
     <>
@@ -36,7 +49,11 @@ const HomePage: React.FC<HomeProps> = ({ articleData }) => {
           {categories.map((category) => (
             <StyledComponents.CategoryButton
               key={category}
-              onClick={() => setSelectedCategory(category)}
+              className={focusedCategoryBtn === category ? "focused" : ""}
+              onClick={() => {
+                setSelectedCategory(category);
+                handleCategoryFocus(category);
+              }}
             >
               {category}
             </StyledComponents.CategoryButton>

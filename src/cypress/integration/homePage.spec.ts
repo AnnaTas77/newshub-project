@@ -4,7 +4,7 @@ describe("Home Page", () => {
   });
 
   it("displays a list of articles", () => {
-    cy.get('[data-test="articles-list"]').should("exist");
+    cy.get('[data-test="articles-list"]').should("be.visible");
     cy.get('[data-test="articles-list"]').should("have.length.greaterThan", 0);
   });
 
@@ -28,11 +28,11 @@ describe("Home Page", () => {
   });
 
   it("checks if each article has image, category, title, author and date (updatedAt)", () => {
-    cy.get('[data-test="article-image"]').should("exist");
-    cy.get('[data-test="article-category"]').should("exist");
-    cy.get('[data-test="article-title"]').should("exist");
-    cy.get('[data-test="article-author"]').should("exist");
-    cy.get('[data-test="article-time-updated"]').should("exist");
+    cy.get('[data-test="article-image"]').should("be.visible");
+    cy.get('[data-test="article-category"]').should("be.visible");
+    cy.get('[data-test="article-title"]').should("be.visible");
+    cy.get('[data-test="article-author"]').should("be.visible");
+    cy.get('[data-test="article-time-updated"]').should("be.visible");
   });
 
   it("checks that when the first article card is clicked, that it navigates to the single page for that specific article", () => {

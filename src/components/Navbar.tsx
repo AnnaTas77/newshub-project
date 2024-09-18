@@ -13,11 +13,12 @@ const Navbar: React.FC = () => {
   };
 
   return (
-    <StyledComponents.NavContainer>
+    <StyledComponents.NavContainer data-test="navbar">
       <StyledComponents.LogoContainerBtn
+        data-test="logo-button"
         onClick={() => handleButtonClick("home")}
       >
-        <Logo />
+        <Logo/>
       </StyledComponents.LogoContainerBtn>
       <StyledComponents.NavbarList>
         <li>

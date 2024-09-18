@@ -1,6 +1,6 @@
 # NewsHub
 
-![NewsHub Landing Page](/public/images/NewsHub-Landing-Page.png)
+![NewsHub Landing Page](/public/images/NewsHub-Landing-Page-new.png)
 
 Welcome to **NewsHub**! This project is a simplified full-stack news platform developed using Next.js, TypeScript, SQLite 3, Sequelize, and Emotion CSS. It serves as a small-scale representation of a comprehensive news website.
 

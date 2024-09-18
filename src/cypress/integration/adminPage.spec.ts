@@ -20,4 +20,9 @@ describe("Admin Page", () => {
     cy.get('[data-test="edit-button"]').should("be.visible");
     cy.get('[data-test="delete-button"]').should("be.visible");
   });
+
+  it("should successfully load the edit page when the user clicks the edit button", () => {
+    cy.get('[data-test="edit-button"]').click();
+    cy.url().should("include", "/edit-article");
+  });
 });

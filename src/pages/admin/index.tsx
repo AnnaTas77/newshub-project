@@ -22,7 +22,7 @@ const AdminPage: React.FC<AdminProps> = ({ articleData }) => {
       </Head>
       <StyledComponents.MainStyle>
         <Link href="/create-article">
-          <StyledComponents.GreenButton>
+          <StyledComponents.GreenButton data-test="create-button">
             Create a New Article
           </StyledComponents.GreenButton>
         </Link>

@@ -90,11 +90,16 @@ const ArticleCard: React.FC<ArticleCardProps> = ({
             key={singleArticle.id}
             href={`/edit-article/${singleArticle.id}`}
           >
-            <StyledComponents.ButtonStyle>Edit</StyledComponents.ButtonStyle>
+            <StyledComponents.ButtonStyle data-test="edit-button">
+              Edit
+            </StyledComponents.ButtonStyle>
           </Link>
         )}
         {isAdmin && (
-          <StyledComponents.ButtonStyle onClick={handleDelete}>
+          <StyledComponents.ButtonStyle
+            onClick={handleDelete}
+            data-test="delete-button"
+          >
             Delete
           </StyledComponents.ButtonStyle>
         )}

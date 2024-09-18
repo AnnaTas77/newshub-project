@@ -33,7 +33,7 @@ const AdminPage: React.FC<AdminProps> = ({ articleData }) => {
 };
 
 export async function getServerSideProps() {
-  const allArticles = await Article.findAll({ order: [["updatedAt", "ASC"]] });
+  const allArticles = await Article.findAll({ order: [["updatedAt", "DESC"]] });
   const articleData = allArticles.map((article) => ({
     id: article.id,
     title: article.title,

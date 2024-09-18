@@ -10,10 +10,9 @@ interface ArticleListProps {
 }
 
 const ArticleList: React.FC<ArticleListProps> = ({ articleData, isAdmin }) => {
-  const reversedData = [...articleData].reverse();
   return (
     <StyledComponents.ArticleContainerStyle isAdmin={isAdmin}>
-      {reversedData.map((singleArticle: ArticleData) =>
+      {articleData.map((singleArticle: ArticleData) =>
         isAdmin ? (
           <ArticleCard
             key={singleArticle.id}

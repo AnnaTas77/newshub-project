@@ -56,20 +56,31 @@ const ArticleCard: React.FC<ArticleCardProps> = ({
               layout="fill"
               objectFit="cover"
               onError={handleError}
+              data-test="article-image"
             />
           </StyledComponents.ImageContainer>
         )}
-        {!isAdmin && <div>{singleArticle.category}</div>}
-        <h4>{singleArticle.title}</h4>
-        <p>{singleArticle.author}</p>
+        {!isAdmin && (
+          <div data-test="article-category">{singleArticle.category}</div>
+        )}
+        <h4 data-test="article-title">{singleArticle.title}</h4>
+        <p data-test="article-author">{singleArticle.author}</p>
         <StyledComponents.TimeContainer>
           {" "}
           {isAdmin ? (
-            <time>Last updated on: {singleArticle.updatedAt}</time>
+            <time data-test="article-time-updated">
+              Last updated on: {singleArticle.updatedAt}
+            </time>
           ) : (
-            <time>{singleArticle.updatedAt}</time>
+            <time data-test="article-time-updated">
+              {singleArticle.updatedAt}
+            </time>
           )}
-          {isAdmin && <time>Created on: {singleArticle.createdAt}</time>}
+          {isAdmin && (
+            <time data-test="article-time-created">
+              Created on: {singleArticle.createdAt}
+            </time>
+          )}
         </StyledComponents.TimeContainer>
       </StyledComponents.CardWrapper>
 

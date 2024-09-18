@@ -11,7 +11,10 @@ interface ArticleListProps {
 
 const ArticleList: React.FC<ArticleListProps> = ({ articleData, isAdmin }) => {
   return (
-    <StyledComponents.ArticleContainerStyle isAdmin={isAdmin}>
+    <StyledComponents.ArticleContainerStyle
+      isAdmin={isAdmin}
+      data-test="articles-list"
+    >
       {articleData.map((singleArticle: ArticleData) =>
         isAdmin ? (
           <ArticleCard
@@ -20,7 +23,11 @@ const ArticleList: React.FC<ArticleListProps> = ({ articleData, isAdmin }) => {
             isAdmin={isAdmin}
           />
         ) : (
-          <Link key={singleArticle.id} href={`/articles/${singleArticle.id}`}>
+          <Link
+            key={singleArticle.id}
+            href={`/articles/${singleArticle.id}`}
+            data-test="article-link"
+          >
             <ArticleCard singleArticle={singleArticle} isAdmin={isAdmin} />
           </Link>
         )

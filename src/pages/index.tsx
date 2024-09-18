@@ -45,7 +45,7 @@ const HomePage: React.FC<HomeProps> = ({ articleData }) => {
         <link rel="icon" href="/newshub-icon.ico" />
       </Head>
       <StyledComponents.MainStyle>
-        <StyledComponents.CategoryContainer>
+        <StyledComponents.CategoryContainer data-test='category-section'>
           {categories.map((category) => (
             <StyledComponents.CategoryButton
               key={category}

@@ -1,11 +1,11 @@
 import { execSync } from "node:child_process";
-import { describe, expect, beforeEach, it, afterAll } from "@jest/globals";
+import { describe, expect, beforeAll, it, afterAll } from "@jest/globals";
 
 import { createMocks, RequestMethod } from "node-mocks-http";
 import type { NextApiRequest, NextApiResponse } from "next";
 import handler from "src/pages/api/articles";
 
-beforeEach(() => {
+beforeAll(() => {
   execSync("npm run seed");
 });
 
@@ -86,5 +86,77 @@ describe("POST /articles", () => {
     const response = res._getJSONData();
     expect(res.statusCode).toBe(400);
     expect(response).toMatchObject({ message: "Title is required." });
+  });
+
+  it("returns a 400 status code for missing content", async () => {
+    const { req, res } = mockRequestResponse("POST");
+    const invalidArticle = {
+      title: "Test Title",
+      author: "Test Author",
+      category: "culture",
+      image: "test.jpg",
+    };
+
+    req.body = invalidArticle;
+
+    await handler(req, res);
+
+    const response = res._getJSONData();
+    expect(res.statusCode).toBe(400);
+    expect(response).toMatchObject({ message: "Content is required." });
+  });
+
+  it("returns a 400 status code for missing author", async () => {
+    const { req, res } = mockRequestResponse("POST");
+    const invalidArticle = {
+      title: "Test Title",
+      content: "<p>Test content</p>",
+      category: "culture",
+      image: "test.jpg",
+    };
+
+    req.body = invalidArticle;
+
+    await handler(req, res);
+
+    const response = res._getJSONData();
+    expect(res.statusCode).toBe(400);
+    expect(response).toMatchObject({ message: "Author is required." });
+  });
+
+  it("returns a 400 status code for missing category", async () => {
+    const { req, res } = mockRequestResponse("POST");
+    const invalidArticle = {
+      title: "Test Title",
+      content: "<p>Test content</p>",
+      author: "Test Author",
+      image: "test.jpg",
+    };
+
+    req.body = invalidArticle;
+
+    await handler(req, res);
+
+    const response = res._getJSONData();
+    expect(res.statusCode).toBe(400);
+    expect(response).toMatchObject({ message: "Category is required." });
+  });
+
+  it("returns a 400 status code for missing image", async () => {
+    const { req, res } = mockRequestResponse("POST");
+    const invalidArticle = {
+      title: "Test Title",
+      content: "<p>Test content</p>",
+      author: "Test Author",
+      category: "culture",
+    };
+
+    req.body = invalidArticle;
+
+    await handler(req, res);
+
+    const response = res._getJSONData();
+    expect(res.statusCode).toBe(400);
+    expect(response).toMatchObject({ message: "Image is required." });
   });
 });

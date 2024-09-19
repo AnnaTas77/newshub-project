@@ -34,7 +34,13 @@ Please note that user authentication has not been implemented in this project du
 
 To get started with the NewsHub project, please follow these steps:
 
-### 1. Database Setup
+### 1. Install Dependencies
+
+```bash
+npm install
+```
+
+### 2. Database Setup
 
 Before running the application, you need to set up the database. This project uses Sequelize with SQLite3. To seed the database with the initial data, follow these steps:
 
@@ -42,7 +48,7 @@ Before running the application, you need to set up the database. This project us
 npm run seed
 ```
 
-### 2. Starting the development server
+### 3. Starting the development server
 
 Launches a local server that allows you to view the application in a web browser at [http://localhost:3000](http://localhost:3000).
 
@@ -85,9 +91,27 @@ The `pages/api` directory is mapped to `/api/*`. Files in this directory are tre
 
 I have incorporated end-to-end (E2E) tests using [Cypress](https://www.cypress.io/). These tests simulate user interactions with the UI to ensure that the application functions correctly from the user's perspective. They cover various scenarios to validate the overall user experience.
 
+You can open Cypress from your project root using the following command:
+
+```bash
+npx cypress open
+```
+
+You can run Cypress from your project root using the following command:
+
+```bash
+npx cypress run
+```
+
 ### API Testing with Jest
 
 The API has been tested using [Jest](https://jestjs.io/). These tests verify the functionality of the API endpoints, ensuring that they respond correctly to various requests and handle errors.
+
+You can run the test suite from your project root using the following command:
+
+```bash
+npm test
+```
 
 ## Contributing
 

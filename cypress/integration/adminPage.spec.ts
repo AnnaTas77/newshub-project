@@ -31,8 +31,10 @@ describe("Admin Page", () => {
 
     cy.on("window:confirm", (text) => {
       expect(text).to.contains("Are you sure you want to delete this article?");
+      //tests the use case of someone clicks “Cancel”
+      return false;
     });
-    //tests the use case of someone clicks “Cancel”
-    return false;
+
+    cy.get('[data-test="article-title"]').first().should("exist");
   });
 });

@@ -5,8 +5,9 @@ export default defineConfig({
     setupNodeEvents(on, config) {
       // implement node event listeners here
     },
-    specPattern: "src/cypress/integration/**/*.spec.{js,jsx,ts,tsx}", // Points to the correct location
+    specPattern: "cypress/integration/**/*.spec.{js,jsx,ts,tsx}", // Points to the correct location
     baseUrl: "http://localhost:3000", // Optional: set your base URL
+    supportFile: false, // Disable the support file
   },
 
   component: {

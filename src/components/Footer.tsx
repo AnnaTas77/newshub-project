@@ -10,7 +10,7 @@ export const Footer: React.FC = () => {
   return (
     <StyledComponents.FooterContainer>
       <StyledComponents.ContentStyles>
-        <StyledComponents.CopyrightStyles>
+        <StyledComponents.CopyrightStyles data-test="copy-right">
           &copy; {currentYear} NewsHub{" "}
           <StyledComponents.SpanStyles>
             <BsDot />

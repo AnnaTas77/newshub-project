@@ -79,7 +79,7 @@ The `pages/api` directory is mapped to `/api/*`. Files in this directory are tre
 
 ## Testing
 
-**Please note that the tests are not comprehensive due to time constraints for this project.**
+**Please note that the tests are not comprehensive due to the time constraints for this project.**
 
 ### End-to-End Testing with Cypress
 

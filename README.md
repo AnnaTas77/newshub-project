@@ -15,6 +15,7 @@ Please note that user authentication has not been implemented in this project du
 - [Tech Stack](#technologies-used)
 - [Features](#features)
 - [Getting Started](#getting-started)
+- [Testing](#testing)
 
 ## Tech Stack
 
@@ -75,6 +76,18 @@ This project includes several API endpoints built with Next.js.
 The [API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/articles](http://localhost:3000/api/articles). This endpoint can be edited in `pages/api/articles.ts`.
 
 The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction).
+
+## Testing
+
+**Please note that the tests are not comprehensive due to time constraints for this project.**
+
+### End-to-End Testing with Cypress
+
+I have incorporated end-to-end (E2E) tests using [Cypress](https://www.cypress.io/). These tests simulate user interactions with the UI to ensure that the application functions correctly from the user's perspective. They cover various scenarios to validate the overall user experience.
+
+### API Testing with Jest
+
+The API has been tested using [Jest](https://jestjs.io/). These tests verify the functionality of the API endpoints, ensuring that they respond correctly to various requests and handle errors.
 
 ## Contributing
 

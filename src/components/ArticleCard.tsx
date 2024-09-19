@@ -19,7 +19,7 @@ const ArticleCard: React.FC<ArticleCardProps> = ({
 
   const router = useRouter();
 
-  const handleError = () => {
+  const handleImageError = () => {
     setImage(defaultImage);
   };
 
@@ -55,7 +55,7 @@ const ArticleCard: React.FC<ArticleCardProps> = ({
               alt="Article Image"
               layout="fill"
               objectFit="cover"
-              onError={handleError}
+              onError={handleImageError}
               data-test="article-image"
             />
           </StyledComponents.ImageContainer>

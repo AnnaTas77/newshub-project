@@ -1,3 +1,5 @@
+// Contains UI tests for the Home Page
+
 describe("Home Page", () => {
   beforeEach(() => {
     cy.visit("/");
@@ -27,6 +29,21 @@ describe("Home Page", () => {
     });
   });
 
+  it("checks that latest category button is initially on focus", () => {
+    cy.get('[data-test="category-section"]')
+      .contains("latest")
+      .should("have.class", "focused");
+  });
+
+  it("applies focused class to the clicked category button", () => {
+    const categoryToTest = "climate";
+    cy.get('[data-test="category-section"]').contains(categoryToTest).click();
+
+    cy.get('[data-test="category-section"]')
+      .contains(categoryToTest)
+      .should("have.class", "focused");
+  });
+
   it("checks if each article has image, category, title, author and date (updatedAt)", () => {
     cy.get('[data-test="article-image"]').should("be.visible");
     cy.get('[data-test="article-category"]').should("be.visible");
@@ -37,7 +54,7 @@ describe("Home Page", () => {
 
   it("checks that when the first article card is clicked, that it navigates to the single page for that specific article", () => {
     cy.get('[data-test="article-link"]').should("exist");
-    // Select on the first article card and visit that url
+    // Selects the first article card and visits that url
     cy.get('[data-test="article-link"]')
       .first()
       .invoke("attr", "href")

@@ -21,8 +21,18 @@ describe("Admin Page", () => {
     cy.get('[data-test="delete-button"]').should("be.visible");
   });
 
-  it("should successfully load the edit page when the user clicks the edit button", () => {
-    cy.get('[data-test="edit-button"]').click();
+  it("should successfully load the edit page when the user clicks the first edit button", () => {
+    cy.get('[data-test="edit-button"]').first().click();
     cy.url().should("include", "/edit-article");
+  });
+
+  it("when clicked, the first delete button should trigger a confirmation with a message", () => {
+    cy.get('[data-test="delete-button"]').first().click();
+
+    cy.on("window:confirm", (text) => {
+      expect(text).to.contains("Are you sure you want to delete this article?");
+    });
+    //tests the use case of someone clicks “Cancel”
+    return false;
   });
 });

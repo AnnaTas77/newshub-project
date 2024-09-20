@@ -4,7 +4,6 @@ export const MainStyle = styled.main`
   display: flex;
   flex-direction: column;
   margin-bottom: 50px;
-  height: 85%;
 `;
 
 export const FormContainer = styled.div`

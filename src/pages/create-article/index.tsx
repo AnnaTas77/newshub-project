@@ -66,6 +66,7 @@ const CreateArticlePage: React.FC = () => {
           name="description"
           content="Provides a form that enables authors and editors to easily submit new articles"
         />
+        <link rel="icon" href="/newshub-icon.ico" />
       </Head>
       <StyledComponents.MainStyle>
         <StyledComponents.FormContainer>

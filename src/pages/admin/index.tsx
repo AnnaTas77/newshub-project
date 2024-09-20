@@ -19,6 +19,7 @@ const AdminPage: React.FC<AdminProps> = ({ articleData }) => {
           name="description"
           content="NewsHub Admin - a powerful content management system designed for seamless news article creation, editing, and publishing"
         />
+        <link rel="icon" href="/newshub-icon.ico" />
       </Head>
       <StyledComponents.MainStyle>
         <Link href="/create-article">

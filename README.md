@@ -4,11 +4,11 @@
 
 Welcome to **NewsHub**! This project is a simplified full-stack news platform developed using Next.js, TypeScript, SQLite 3, Sequelize, and Emotion CSS. It serves as a small-scale representation of a comprehensive news website.
 
-The primary objective of this project is to create a seamless full-stack application that enables users to view news articles effortlessly. The user interface is designed to be intuitive and engaging, ensuring a positive user experience for all visitors.
+The main goal is to create a seamless application for users to effortlessly view news articles, with an intuitive and engaging user interface for a positive experience.
 
-Additionally, the project features an Admin section that functions as a simplified Content Management System (CMS) tailored for editors. This section allows editors to create, edit, and delete news articles efficiently, which is essential for keeping the platform's content current and relevant.
+The project also includes an Admin section that acts as a simplified Content Management System (CMS) for editors to efficiently create, edit, and delete news articles, ensuring the content remains current.
 
-Please note that user authentication has not been implemented in this project due to time constraints. Despite this limitation, the project successfully demonstrates the core functionalities of a news platform and provides a solid foundation for future enhancements.
+Please note that user authentication has not been implemented due to the project time constraints. Nonetheless, the project effectively demonstrates the core functionalities of a news platform and provides a solid foundation for future enhancements.
 
 ## Table of Contents
 
